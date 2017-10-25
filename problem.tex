@@ -1,0 +1,181 @@
+\section{Motivation}
+
+We start from an issue/problem that comes from the practice of using agent prog languages implementing the BDI model. 
+%
+In particular we talk about of languages based on AgentSpeak(L) - e.g., Jason, ASTRA - however it is relevant for any language implementing the BDI model as defined here \cite{}.
+
+The issue is about the plan model adopted.
+
+\subsection{Plan encapsulation}
+%
+In BDI in general, plans are meant to specify the means by which an agent should satisfy an end.  In the model adopted by AgentSpeak(L) 
+
+\begin{small}
+\begin{verbatim}
+event : context -> body
+\end{verbatim}
+\end{small}
+
+the body of the plan is a sequence of actions or goals. This is a standard approach, coming from planning.
+%
+In the programming practice however, in the strategy (the means) adopted to achieve some goal (the end) it can be useful or event necessary to exploit or react to percepts from the environment and  asynchronous events.   That is: an agent is not reacting only to unexpected events so as to change/adapt its course of actions, but reactivity could be an effective ingredient of the strategy, of the plan adopted to achieve some goal.
+
+Besides the programming practice, this is the case if we consider human activities too. Reactivity is a key ingredient of many activities that we perform to achieve goals, not only to handle events that represents errors or unexpected situations (for the current course of actions).
+%
+In the following let's refer to plans triggered by event goals \texttt{+!g <- ...} as g-plans, and plans triggered by the belief change (including percepts) as e-plan.
+%
+The BDI reasoning cycle automatically allows to update beliefs from percepts, and this allows to write down structured plans with the course of actions that changes according to the environment, by exploiting goals/subgoals and contexts.
+%
+For instance, as a super simple example (which however captures the point), let?s consider the goal of  printing down all the numbers between N and 1, stopping if/when a 'stop' percept is perceived. 
+%
+This task can be effectively tackled using only g-plans:
+
+\begin{verbatim}
++!print_nums(N) : not stop 
+  <-  println(N);
+      !print_nums(N-1).
++!print_nums(0).
++!print_nums(_) : stop.
+\end{verbatim}
+	
+\noindent Here it is easy to do by simply exploiting:
+%
+\begin{itemize}
+\item automatic percepts -> belief mapping
+\item the possibility to express the context in plan definition
+\end{itemize}
+
+\noindent Besides, the possibility to trigger subgoals in plan body is  a primary way to realize structured activities whose flows can be environment dependent.
+
+In some cases however this approach is not fully effective, and e-plans are needed. 
+%
+In particular, every time we need to react while executing the body of a plan. A typical case occurs when we have actions (or subgoals) in a plan that could take long time to complete.
+%
+For instance, suppose that instead of simply printing we have a long-term elab goal (or could be even an action):
+
+\begin{verbatim}
++!elab_nums(N) : not stop 
+  <-  !elab(N);
+      !elab_nums(N-1).
++!elab_nums(N) : stop. 
++!elab_nums(0).
+\end{verbatim}
+
+\noindent Suppose that - realistically - we cannot spread/pollute plans about the goal \texttt{!elab} with a stop dependent behaviour.
+%
+To solve this problem, using the AgentSpeak(L) and BDI model, an e-plan can be introduced,
+using meta-level actions (Jason) to act on the current ongoing intention:
+
+\begin{verbatim}
++!elab_nums(N)
+  <-  !elab(N);
+      !print_nums(N-1).		
++!elab_nums(0).
++stop <- .abort(elab_nums(_)).
+\end{verbatim}
+
+\noindent The problem here is that the plan \texttt{+stop <- ... } is part of the strategy to achieve the goal \texttt{!elab\_nums}, however it is encoded as a separate unrelated plan.
+
+
+\subsection{Explicit and Implicit Goals}
+
+As another main case, let's consider the implementation of strategies for maintenance task/goal. 
+%
+Typically, these strategies account for a set of e-plan, eventually triggering g-plan. That is: there is not an explicit goal (and corresponding plans) representing the ongoing activity.
+
+For instance, the toy example used in [] about the robot cleaning the environments from something (bombs, waste) in []
+
+\begin{verbatim}
+@p1
++bomb(Terminal, Gate, BombType) : 
+  skill(BombType)
+  <- !go(Terminal, Gate);
+      disarm(BombType).
+@p2
++bomb(Terminal, Gate, BombType) : 
+  ?skill(BombType)
+  <- !moveSafeArea(Terminal, Gate, BombType).
+@p3
++bomb(Terminal, Gate, BombType) : 
+  not skill(BombType) & not ?skill(BombType)
+  <- .broadcast(tell, alter).
+...
+\end{verbatim}
+
+
+This works very well, however it is not fully satisfactory from a conceptual point of view. Actually the agent reacts to bomb because it has an implicit goal, which is about dismantling bombs. 
+%
+However - since there are no g-plan about it - there is no explicit trace in the agent mental structures about this goal. 
+
+It is worth remarking that it is possible to bypass the problem in concrete languages (e.g. Jason), by exploiting specific features/tricks. However the solution is typically far from being satisfactory from a conceptual point of view.
+%
+For instance, about the bombing example - we can introduce an explicit  goal \texttt{!dismantle\_bombs} and a plan in which the course of action is simply waiting to perceive that all bombs have been dismantled:
+
+\begin{verbatim}
+@p0
++!dismantle_bombs
+  <- .wait(all_bombs_dismantled).
+@p1
++bomb(Terminal, Gate, BombType) : skill(BombType) 
+  <- ?
+\end{verbatim}
+
+\noindent On the one hand, this makes it possible to have an explicit intention at runtime about the dismantling bomb activity. However the plan p0 is completely unrelated in the code from the other reactive plans. Besides, when +bomb is perceived, a separate intention wrt the one about the dismantling goal is created. So they are treated as separate, not related activities.
+
+\subsection{Failure Handling}
+
+A further problem which is indirectly related to this issue is about plan failure handling, which is a very important aspects of agent programming.
+
+In AgentSpeak(L) - and Jason as well - we can define plans that handle the failure of the execution of g-plan (generating the event -!g), but not of e-plan.
+
+So e.g. if there is a problem in the println action in:
+
+\begin{verbatim}
+@p0
++stop
+  <- println("stopped").
+\end{verbatim}
+
+the plan execution fails, without any possibility to react and handle the failure.
+
+In order to handle this, a programmer is forced to structure every e-plan with failure handling using a subgoal g:
+
+\begin{verbatim}
++b <- !g'; ...
++!g' <- a; b; c...
+-!g' <- <failure handler>
+\end{verbatim}
+
+Besides failure, meta-level actions to manage intentions (plans in execution) at runtime
+works only with g-plans, since they need to specify as argument the specific goal which generated the intention.
+
+\bigskip
+
+Summing up, the natural solution that can be defined in AgentSpeak(L) has some drawbacks from a programming point of view:
+
+\begin{description}
+%
+\item[Lack of encapsulation]  The strategy to achieve a goal is fragmented among multiple plans, not explicitly related.
+%
+\item[Implicit vs. Explicit goals]  A part of the plans in a program have a goal which is not explicit, it is implicit.
+%
+\item[Difficult failure handling] Failures/errors generated in the body of e-plan cannot be captured.
+%
+\item[Difficult runtime management] Intentions generated by e-plans cannot be managed. Besides, as a consequence of point (1), it is not possible to manage (suspend, abort) the intentions related to some goals as a whole.
+%
+\item[Runtime overhead] Each reaction => new intention => new stack. 
+%
+\end{description}
+
+Besides programming drawbacks, we can devise also higher level drawbacks:
+
+\begin{itemize}
+%
+\item Design / Engineering Drawbacks -- weak encapsulation => impact on modularity => impact on many aspects
+
+%
+\item Reasoning drawbacks -- proliferation of intentions => impact on the reasoning cycle, on intention selection
+%
+\end{itemize}
+
+
