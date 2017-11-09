@@ -20,22 +20,39 @@ based on the BDI model:
 %
 main examples are Jason~\cite{jason06,bordini:07} and ASTRA~\cite{DBLP:conf/prima/CollierRL15}.
 %
-Besides Agent Programming Languages,  the {\asl}  model has been adopted as the main reference to development several BDI agent-based frameworks and technologies~\cite{BordiniMAPlpa,BordiniMAPlta}.
+Besides Agent Programming Languages,  the {\asl}  model has been
+adopted as the main reference to development several BDI agent-based
+frameworks and technologies~\cite{BordiniMAPlpa,BordiniMAPlta} as well
+as serving as inspiration for theoretical work aiming to formalise
+aspects of BDI agents and agent programming
+languages~\cite{SardinaThangCAN,LouiseAIL,BordiniMCAPL}.
 
 
 %
 % Contribution
 %
-Existing Agent Programming Languages extended the language with constructs and mechanisms making it  practical from a programming point of view~\cite{jason06}.
+Existing Agent Programming Languages extended the language with
+constructs and mechanisms making it practical from a programming point
+of view~\cite{jason06}.
 %
-Besides, proposals in literature extended the model is order to make it effective for specific kind of systems---e.g., real-time systems~\cite{Vikhorev:2011:APP:2030470.2030529}, XXX --- or to improve the structure of programs, e.g. in terms of modularity~\cite{Madden2010,Nunes2014}.
+Besides, proposals in literature extended the model is order to make
+it effective for specific kinds of systems --- e.g., real-time
+systems~\cite{Vikhorev:2011:APP:2030470.2030529}, XXX --- or to
+improve the structure of programs, e.g. in terms of
+modularity~\cite{Madden2010,Nunes2014}.
+%%RHB: Not sure what should go in XXX above?
 
 %
-Along this line, in this paper we describe a novel extension of the {\asl}  model -- that we called {\aser} -- featuring \emph{plan encapsulation}, i.e. the possibility to define plans that fully encapsulate the strategy to achieve the corresponding goals, integrating both the pro-active and the re-active behaviour.
+Along this line, in this paper we describe a novel extension of the
+{\asl} model --- called {\aser} --- featuring \emph{plan
+  encapsulation}, i.e. the possibility to define plans that fully
+encapsulate the strategy to achieve the corresponding goals,
+integrating both the pro-active and the reactive behaviour.
 %
 % Key points
 %
-This extension turns out to bring a number of important benefits to agent programming based on the BDI, namely:
+This extension turns out to bring a number of important benefits to
+agent programming based on the BDI model, namely:
 %
 \begin{itemize}
 \item encapsulation of goal-oriented behaviour -- ...
@@ -48,17 +65,20 @@ This extension turns out to bring a number of important benefits to agent progra
 %
 \begin{itemize}
 \item reduces the gap between the design level and the programming level,  ...
-\item ease goal-based reasoning -- ...
+\item facilitate goal-based reasoning -- ...
 \end{itemize}
 
 The remainder of the paper is organised as follows:
 %
-first we describe in details the motivation that lead to the proposal (Section \ref{sec:motivation});
+first we describe in details the motivations that lead to the proposal (Section \ref{sec:motivation});
 %
-then, we introduce and discuss {\aser},  introducing the main concepts, syntax and semantics---first informally  (Section \ref{sec:proposal}) and then providing the formalisation of some key aspect (Section \ref{sec:formalisation}).
+then, we introduce and discuss {\aser},  introducing the main
+concepts, syntax and semantics --- first informally  (Section
+\ref{sec:proposal}) and then providing the formalisation of some key
+aspect (Section \ref{sec:formalisation}).
 %
-Finally we discuss the results of a first evaluation that has been carried on, based on a prototype implementation extending the ASTRA platform (Section \ref{sec:evaluation}).
+Finally we discuss the results of a first evaluation that has been
+carried out, based on a prototype implementation extending the ASTRA
+platform (Section \ref{sec:evaluation}).
 %
 
-
-.
