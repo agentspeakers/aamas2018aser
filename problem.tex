@@ -1,23 +1,27 @@
 \section{Motivation}
 \label{sec:motivation}
 
-The main motivation behind {\aser} comes from the experience using agent programming languages  based on the {\asl} model, {\jason} and ASTRA in particular.
+The main motivation behind {\aser} comes from the experience using
+agent programming languages based on the {\asl} model, {\jason} and
+ASTRA in particular.
 %
-Yet, we think that issues are relevant for any language implementing based on the BDI architecture.
+Yet, these issues are relevant for any language based on the BDI
+architecture.
 %
 The first issue is about the plan model.
 
 % \subsection{Plan encapsulation}
 %
-In the BDI model, plans are meant to specify the means by which an agent should satisfy an end~\cite{Rao96}.  
+In the BDI model, plans are meant to specify the means by which an
+agent should satisfy an end~\cite{Rao96}.
 %
-In {\asl} a plan consists in a rule of the kind \textsf{e : c <- b}.
+In {\asl} a plan consists of a rule of the kind \textsf{e : c <- b}.
 %
 The head of a plan consists of a triggering event \textsf{e} and a context \textsf{c}.
 %
 The triggering event specifies why the plan was triggered, i.e., the addition or deletion of a belief or goal. 
 %
-The context specifies those beliefs that should hold in the agent?s set of base beliefs, when the plan is triggered. 
+The context specifies those beliefs that should hold in the agent's set of base beliefs, when the plan is triggered. 
 %
 The body of a plan is a sequence of actions or (sub-)goals.
 %
@@ -25,25 +29,47 @@ The body of a plan is a sequence of actions or (sub-)goals.
 %
 % THE PROBLEM
 %
-So in this approach -- as well as in planning, in general -- the \emph{means} to achieve a goal -- i.e., the body -- is meant to be fully specified in terms of the actions the agent should execute and the (sub-)goals the agent should achieve or test.
+So in this approach --- as well as in planning, in general --- the
+\emph{means} to achieve a goal --- i.e., the body --- is meant to be
+fully specified in terms of the actions the agent should execute and
+the (sub-)goals the agent should achieve or test.
 %
-In the programming practice however, it is often the case that the strategy (the means) adopted to achieve some goal (the end) would naturally include also \emph{reactions}, i.e.  reacting to events  asynchronously perceived from the environment, including changes about the beliefs.
+In the programming practice, however, it is often the case that the
+strategy (the means) adopted to achieve some goal (the end) would
+naturally include also \emph{reactions}, i.e., reacting to events
+asynchronously perceived from the environment, including changes about
+the beliefs.
 % 
-That is: an agent is not reacting only to unexpected events so as to change/adapt its course of actions, but reactivity could be an effective ingredient of the strategy, of the plan adopted to achieve some goal.
+That is, an agent is not reacting only to unexpected events so as to
+change/adapt its course of actions, but reactivity could be an
+effective ingredient of the strategy, of the plan adopted to achieve
+some goal.
 %
-Besides the programming practice, this is the case if we consider human activities too. Reactivity is a key ingredient of many activities that we perform to achieve goals, not only to handle events that represents errors or unexpected situations (for the current course of actions).
+Besides the programming practice, this is often the case if we
+consider human activities too. Reactivity is a key ingredient of many
+activities that we perform to achieve specific goals, not only to
+handle events that represents errors or unexpected situations (for the
+current courses of actions).
 %
-It follows the opportunity to extend the plan model so as to fully \emph{encapsulate} also reactions that are part of the strategy to achieve the goal.
+It follows naturally that this is also an opportunity to extend the
+plan model so as to fully \emph{encapsulate} also reactions that are
+part of the strategy to achieve the goal, as well as the subgoals that
+are specific to that particular goal.
 
 
 %
 %
 %
-In the following, let's refer to plans triggered by event goals \texttt{+!g <- ...} as \emph{g-plans}, and plans triggered by the belief change (including percepts) as \emph{e-plan}.
+In the following, let's refer to plans triggered by event goals
+\texttt{+!g <- ...} as \emph{g-plans}, and plans triggered by the
+belief change (including percepts) as \emph{e-plans}.
 %
-The BDI reasoning cycle automatically allows to update beliefs from percepts, and this allows to write down structured plans with the course of actions that changes according to the environment, by exploiting goals/subgoals and contexts.
+The BDI reasoning cycle automatically updates beliefs from percepts,
+and this allows us to write down structured plans with courses of
+actions that change according to the environment, by exploiting
+goals/subgoals and contexts.
 %
-For instance, as a very simple example yet capturing the point, let's consider the goal of  printing down all the numbers between N and 1, stopping if/when a 'stop' percept is perceived. 
+For instance, as a very simple example, yet capturing the point, let us consider the goal of  printing down all the numbers between N and 1, stopping if/when a 'stop' percept is perceived. 
 %
 This task can be effectively tackled using only g-plans:
 
@@ -54,18 +80,27 @@ This task can be effectively tackled using only g-plans:
 +!print_nums(N) : not stop <- println(N); !print_nums(N-1).
 \end{verbatim}
 \end{small}
+%% RHB: should we replace println with .print ??
 	
-\noindent This is a clean solution, exploiting the context in plans  and the fact that in the reasoning cycle beliefs are automatically updated given new percepts.
+\noindent This is a clean solution, exploiting the context in plans
+and the fact that in the reasoning cycle beliefs are automatically
+updated given new percepts.
 %
-More generally,  in the {\asl} model the suggested approach to realise structured activities whose flow can be environment dependent is by means of (sub-)goals and corresponding plans with a proper context.
+More generally, in the {\asl} model the suggested approach to realise
+structured activities whose flow can be environment dependent is by
+means of (sub-)goals and corresponding plans with a proper context.
 
-In some cases however this approach is not fully effective, and \emph{e-plans} are needed. 
+In some cases however this approach is not fully effective, and
+\emph{e-plans} are needed,
 %
-In particular, every time we need to react \emph{while executing the body of a plan}. 
+in particular every time we need to react \emph{while executing the
+  body of a plan}.
 %
-A typical case occurs when we have actions (or subgoals) in a plan that could take long time to complete.
+A typical case occurs when we have actions (or subgoals) in a plan
+that could take a long time to complete.
 %
-For instance, suppose that instead of simply printing we have a long-term \texttt{elab} goal (it could be even an action):
+For instance, suppose that instead of simply printing we have a
+long-term \texttt{elab} goal (it could be even an action):
 
 \begin{small}
 \begin{verbatim}
@@ -75,9 +110,12 @@ For instance, suppose that instead of simply printing we have a long-term \textt
 \end{verbatim}
 \end{small}
 
-\noindent Suppose that -- realistically -- we cannot spread/pollute plans about the goal \texttt{!elab} with a stop dependent behaviour.
+\noindent Suppose that, realistically, we cannot spread/pollute plans
+about the goal \texttt{!elab} with a stop-dependent behaviour.
 %
-To solve this problem, using the {\asl} model and in BDI architectures an e-plan can be introduced, using e.g. internal actions to act on the current ongoing intention:
+To solve this problem, using the {\asl} model and in BDI architectures
+an e-plan can be introduced, using e.g. internal actions to act on the
+current ongoing intention:
 
 \begin{small}
 \begin{verbatim}
@@ -86,14 +124,19 @@ To solve this problem, using the {\asl} model and in BDI architectures an e-plan
 +stop <- .abort(elab_nums(_)).
 \end{verbatim}
 \end{small}
+%% RHB: should we change .abort to .drop_intention ?
 
-\noindent The problem here is that the plan \texttt{+stop <- ... } is part of the strategy to achieve the goal \texttt{!elab\_nums}, however it is encoded as a separate unrelated plan.
+\noindent The problem here is that the plan \texttt{+stop <- ... } is
+part of the strategy to achieve the goal \texttt{!elab\_nums}, however
+it is encoded as a separate unrelated plan.
 
 % \subsection{Explicit and Implicit Goals}
 
-The use of e-plans to achieve goals is actually an important conceptual brick of the {\asl} model.
+The use of e-plans to achieve goals is actually an important
+conceptual brick of the {\asl} model.
 %
-Let's consider the robot cleaning example used to describe plans in {\cite{Rao96}}. 
+Let us consider the robot cleaning example used to describe plans in
+{\cite{Rao96}}.
 %
 One of the plans is:
 
@@ -104,11 +147,16 @@ One of the plans is:
 \end{verbatim}
 \end{small}
 
-\noindent  That is: as soon as the perceives that there is a waste in its location, then it can pick it and bring to the bin.
+\noindent That is, as soon as the robot perceives that there is a
+waste in its location, then it can pick it up and bring it to the bin.
 %
-This plan an essential brick of the overall strategy to achieve the goal of cleaning the environment---or, to maintain the environment clean, in a \emph{maintenance} goal view.
+This plan an essential brick of the overall strategy to achieve the
+goal of cleaning the environment --- or to maintain the environment
+clean, in a \emph{maintenance goal} view.
 %
-However, the fact that this plan is useful to achieve that goal is not explicit in the source code, it remains in the mind of the programmer/designer.
+However, the fact that this plan is useful to achieve that goal is not
+explicit in the source code, it remains in the mind of the
+programmer/designer.
 %
 %
 %For instance, let's consider the classic toy example about the robot cleaning the environments from something (bombs, waste)~\cite{jason06}:
@@ -134,9 +182,11 @@ However, the fact that this plan is useful to achieve that goal is not explicit 
 %
 %This works very well, however it is not fully satisfactory from a conceptual point of view. 
 %
-The agent reacts to a waste in a location because it has an implicit goal, which is about cleaning the environment.
+The agent reacts to a waste in a location because it has an implicit
+goal, which is about cleaning the environment.
 %
-However -- since there are no g-plan about it -- there is no explicit trace in the agent mental structures about this goal. 
+However, since there are no g-plans about it, there is no explicit
+trace in the agent mental structures about this goal.
 
 %It is worth remarking that it is possible to bypass the problem in concrete languages (e.g. {\jason}), by exploiting specific features/tricks. 
 %%
@@ -153,11 +203,14 @@ However -- since there are no g-plan about it -- there is no explicit trace in t
 
 % \subsection{Failure Handling}
 
-This issue impacts also on plan failures handling, which is a very important aspects of agent programming.
+This issue impacts also on plan failures handling, which is a very
+important aspect of agent programming.
 %
-In {\asl} we can define plans that handle the failure of the execution of g-plan (generating the event \texttt{-!g}), but not of e-plan.
+In the Jason dialect of {\asl}, we can define plans that handle the
+failure of the execution of g-plans (generating the event
+\texttt{-!g}), but not of e-plans.
 %
-So e.g. if there is a problem in the println action in:
+So, for example, if there is a problem in the println action in:
 
 \begin{small}
 \begin{verbatim}
@@ -165,9 +218,11 @@ So e.g. if there is a problem in the println action in:
 \end{verbatim}
 \end{small}
 
-\noindent the plan execution fails, without any possibility to react and handle the failure.
+\noindent the plan execution fails, without any possibility to react
+and handle the failure.
 %
-In order to handle this, a programmer is forced to structure every e-plan with failure handling using a subgoal:
+In order to handle this, a programmer is forced to structure every
+e-plan with failure handling using a subgoal:
 
 \begin{small}
 \begin{verbatim}
@@ -177,39 +232,57 @@ In order to handle this, a programmer is forced to structure every e-plan with f
 \end{verbatim}
 \end{small}
 
-\noindent This contributes to make the program larger and verbose, besides augmenting the number of plans to be managed by interpreter-
+\noindent This contributes to making the program longer and verbose,
+besides increasing the number of plans to be managed by the
+interpreter.
 
 %Besides failure, meta-level actions to manage intentions (plans in execution) at runtime
 %works only with g-plans, since they need to specify as argument the specific goal which generated the intention.
 
 \bigskip
 
-To summarise, this is the set of key issues identified for the basic plan model in the practice of agent programming:
+To summarise, this is the set of key issues identified for the basic
+plan model in the practice of agent programming:
 %
 \begin{description}
 %
-\item[Lack of encapsulation]  -- The strategy to achieve a goal is fragmented among multiple plans, not explicitly related.
+\item[Lack of encapsulation:] The strategy to achieve a goal is
+  fragmented among multiple plans, not explicitly related.
 %
-\item[Implicit vs. Explicit goals]  -- A part of the plans in a program have a goal which is not explicit, it is implicit.
+\item[Implicit vs. Explicit goals:] A part of the plans in a program
+  have a goal which is not explicit, it is implicit.
 %
-\item[Difficult failure handling] -- Failures/errors generated in the body of e-plan cannot be directly captured.
+\item[Difficult failure handling:] Failures/errors generated in the
+  body of e-plan cannot be directly captured.
 %
 \end{description}
 
-\noindent This has an impact also on the performances of the agent interpreter at runtime. Each reaction represented by an e-plan necessarily generate a new intention to manage it, increasing the number of plans in execution to be managed by the agent reasoning cycle.
+\noindent This has an impact also on the performance of the agent
+interpreter at runtime. In the traditional model, each reaction
+represented by an e-plan necessarily generates a new intention to
+manage it, increasing the number of plans in execution to be managed
+by the agent reasoning cycle.
 %
-This could have also a negative impact also on intention selection at each reasoning cycle~\cite{DBLP:conf/atal/LoganTY17}.
+This could have also a negative impact on intention selection at
+each reasoning cycle~\cite{DBLP:conf/atal/LoganTY17}.
 
 %\item[Difficult runtime management] -- Intentions generated by e-plans cannot be managed. Besides, as a consequence of point (1), it is not possible to manage (suspend, abort) the intentions related to some goals as a whole.
 %
 %\item[Runtime overhead] Each reaction (e-plans) is   new intention => new stack. 
 
 
-Besides the pure programming level, it is worth noting that these issues can affect the whose software engineering process concerning agent development. 
+Besides the pure programming level, it is worth noting that these
+issues can affect the %whose
+software engineering process concerning
+agent development.
 %%
-In particular, at the design level it is natural to specify coarse-grained plans fully encapsulating the strategy to achieve or maintain goals.
+In particular, at the design level, it is natural to specify
+coarse-grained plans fully encapsulating the strategy to achieve or
+maintain goals.
 %
-It would be important then to keep as much as possible the same level of abstraction when going from the design to programming, and at runtime too, to support agent reasoning.
+It would be important then to keep as much as possible the same level
+of abstraction when going from the design to programming, and at
+runtime too, to support agent reasoning.
 
 
 %
