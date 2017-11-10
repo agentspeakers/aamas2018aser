@@ -6,37 +6,38 @@ To overcome the problems discussed above, we consider two key changes in the pla
 %
 % 
 %
-The first one is to extend the body of plans beyond the simple sequence of actions and goals, so as to include also the possibility to specify a reactive behaviour encapsulated in the plan.
+The first one is to extend the plans beyond the simple sequence of actions and goals, so as to include also the possibility to specify a reactive behaviour encapsulated in the plan.
 %
 Coherently with the {\asl} model, such a behaviour can be expressed in terms of e-plans.
 %
-Accordingly, a plan body becomes the \emph{scope} of both a sequence of actions -- referred as \emph{main sequence of actions} -- and a set of e-plans, specifying a reactive behaviour which is active at runtime only when the plan is in execution, and g-plans, specifying plans to achieve goals that are relevant only in the scope of this plan.
+% JH: I changed a bit the terminology
+Accordingly, a plan becomes the \emph{scope} of ($i$) a sequence of actions (referred as \emph{body actions}), ($ii$) a set of e-plans, specifying a reactive behaviour which is active at runtime only when the plan is in execution, and ($iii$) a set of g-plans, specifying plans to achieve subgoals that are relevant only in the scope of this plan. The e-plans and g-plans are referred as \emph{sub-plans}.
 %
-The e-plans set may include also reactions to failures occurring when executing actions of the main sequence or the body of e-plans.
+The sub-plans may include also reactions to failures occurring when executing the plan.
 
 %
 %
 %
-The second one is enforcing e-plans -- as pieces of reactive behaviours -- must always be defined in the context of a g-plan -- that is we enforce the principle that an agent does (and reacts) always because of a goal to achieve or maintain.
+The second one is enforcing that e-plans -- as pieces of reactive behaviours -- must always be defined in the context of a g-plan. We are thus  enforcing the principle that an agent does (and reacts) always because of a goal to achieve or maintain.
 %
-This enforce the programmers to explicitly specify what's the goal to achieve even when defining a pure reactive behaviour. 
+This ensures that programmers explicitly specify what is the goal to achieve even when defining a pure reactive behaviour. 
 %
-In so doing, at runtime every intention -- i.e., plan in execution -- is associated to a goal to achieve.
+In so doing, at runtime every intention -- i.e., plan in execution -- has an associated goal being pursued.
 
 In the remainder of the section we first describe in detail the syntax and informal semantics of the new plan model, including simple examples, and then we discuss the key benefits. 
 
 \subsection{Informal Syntax and Semantics}
 
-At the top level, an {\aser} program is a collection of g-plans, whose syntax is shown in the following:
+At the top level, an {\aser} program is a collection of g-plans, whose syntax is exemplified in the following:
 %
 % CURRENT VERSION 0.2 (in the doc)
 %
 {\small
 \begin{verbatim}
-/*  g-plans */
+/*  g-plans to achieve goal g in context c */
 +!g : c <: gc { 
 
-  <- a; b; ?g1; !g1; !!g2. // main sequence, optional.
+  <- a; b; ?g1; !g1; !!g2. // body (optional).
 
   /* e-plans */
   +e1 : c1 <- b1.	
@@ -53,27 +54,17 @@ At the top level, an {\aser} program is a collection of g-plans, whose syntax is
   /* further g-plans */
   +!g1 : c1 <: gc1 { ... }
 }
-
 \end{verbatim}}
 
-Like in {\asl}, a g-plan is defined by rule with a head and a body.
+Like in {\asl}, a g-plan is defined with a head and a body.
 %
-In {\aser} the body is defined by two elements: 
-%
-a \emph{plan block}, including a main sequence and a set of plans, and a \emph{goal condition} \textsf{gc}---which is a belief formula analogous to the context. 
-%
-The main sequence of actions can be empty---this is the case of plans expressing a pure reactive behaviour.
-%
+Besides the triggering event and the context, the head has a third new element: a \emph{goal condition}, optionally written after \texttt{<:}, with the same syntax as the context. While the context is a pre-condition to select the plan as applicable for an event, the goal condition is a post-condition that defines when the goal can be considered as achieved. Any intention\footnote{As in \asl, an intention is the result of the deliberation to commit to some desire. Briefly, if the agent has an applicable for a goal event (i.e.\ a desire), it commits to it by creating an intention based on that plan and starts executing that plan.} created based on this g-plan (hereafter referred as g-plan intention) can be removed from the set of current intentions only and only if this condition is achieved. If no goal condition is specified, the intention is considered achieved as soon as the body execution completes, as usual in \asl. However, if a goal condition is defined, to finish the body execution is not sufficient to remove the intention. 
 
+In {\aser} the body is enclosed by \texttt{\{} and \texttt{\}} and is composed of the body actions (after \texttt{<-}) and sub-plans. 
 %
-Conceptually, the sub-plans (e-plans and g-plans) stored in the plan block are available in the plan library only when the g-plan is an execution.
+Like in {\asl}, as soon as a g-plan intention is created, the body actions start to execute. The body actions can be empty -- this is the case of g-plans expressing a pure reactive behaviour.
 %
-Like in {\asl}, as soon as the g-plan is instantiated, the main sequence is executed.
-%
-If no goal condition is specified, the plan is considered completed as soon as the main sequence is completed.
-%
-Otherwise, the g-plan is considered completed only if/when the beliefs expressed in the goal condition hold. 
-%
+The sub-plans of the g-plan are considered as relevant only for events produced by the g-plan intention. Since, they are in the scope of g-plan. 
 
 % GoalCondition is analogous to the context: however, if context can be considered to be as the pre-condition to execute the plan, the GoalCondition are like a post-condition, which corresponds to a declarative description of the goal to be achieved. 
 %
@@ -84,9 +75,7 @@ Otherwise, the g-plan is considered completed only if/when the beliefs expressed
 % The body of the plan provides a lexical and runtime scope of the sub-plans, that is:  variables used in the g/c expression are visible also to subplans the lifetime/availability of the sub-plans is limited to the time in which the g-plan is in execution
 
 
-While a g-plan is in execution, if the agent perceives an event triggering a sub-plan described in the plan block and the sub-plan is applicable according to its specified context, then the body of the plan is stacked on top of the stack of the current intention (associated to the g-plan).
-%
-If the agent was executing the main sequence, the effect is to \emph{interrupt} it so as to execute the body of the sub-plan.
+While a g-plan intention is executing, it can be \emph{interrupted} by events relevant for its e-plans. When the agent perceives an event and an e-plan from g-plan is applicable according to its specified context, then the execution of body of the g-plan is suspended until the body of the e-plan finish its execution.
 %
 In {\asl} this is the case when executing a sub-plan associated to a goal defined in the sequence, e.g.: \textsf{a1; a2; !g1; a3}, in a synchronous way.
 %
