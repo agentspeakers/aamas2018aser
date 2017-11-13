@@ -189,6 +189,21 @@ goal, which is about cleaning the environment.
 However, since there are no g-plans about it, there is no explicit
 trace in the agent mental structures about this goal.
 
+This problem can be also illustrated in the following
+scenario. Considering an agent that includes a set of plans (a module
+written by a third party) to handle social obligations. The module has
+several e-plans for the different types of obligations:
+\begin{small}
+\begin{verbatim}
++obligation(Ag,committed(Goal)) : .my_name(Ag)      <- ...
++obligation(Ag,achieve(Goal))   : .my_name(Ag)      <- ...
+-obligation(Ag,Goal) : .my_name(Ag) & .intend(Goal) <- ...
+...
+\end{verbatim}
+\end{small}
+If for some reason during its execution an agent decides to not follow these plans anymore (e.g.\ it decides to be disobedient), it is difficult to ``disable'' the behaviour of the above plans. Either these plans have to be changed to consider a particular state of the agent or the agent removes these plans form its plan library. Neither option is simple to program. % suitable: the third party code could be not modified; we do not have references for these plans to remove them.
+Although we can solve the problem, the lack of an explicit goal stating that the agent intends to be obedient is the cause of this problem.
+
 %It is worth remarking that it is possible to bypass the problem in concrete languages (e.g. {\jason}), by exploiting specific features/tricks. 
 %%
 %However the solution is typically far from being satisfactory from a conceptual point of view.

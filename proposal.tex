@@ -199,6 +199,32 @@ In case we want to take some action to react to \texttt{stop}, we can introduce 
 }
 \end{verbatim}}
 
+For the example of plans to handle social obligations, we can define an explicit goal by encapsulating the e-plans in a g-plan as follows:
+\begin{small}
+\begin{verbatim}
++!be_obedient <: false {
+   +obligation(Ag,committed(Goal)) : .my_name(Ag)      <- ...
+   +obligation(Ag,achieve(Goal))   : .my_name(Ag)      <- ...
+   -obligation(Ag,Goal) : .my_name(Ag) & .intend(Goal) <- ...
+   ...
+}
+\end{verbatim}
+\end{small}
+\noindent Now the agent can disable these plans by simply performing \texttt{.abort(be\_obedient)}, resumes its obedient behaviour by \texttt{!be\_obedient}, and verify whether it is being obedient by testing \texttt{.intend(be\_obedient)}.
+
+With the new language, we can program different kinds of commitments to goals~\cite{cohen:90, winikoff:02} by exploting the goal condition. For instance, the Single Minded Commitment for goal \texttt{g} can be programmed as:
+\begin{small}
+\begin{verbatim}
++!g <: g | f {
+   ...
+}
+\end{verbatim}
+\end{small}
+where \texttt{f} states when the goal becomes impossible. The agent commits to achieve \texttt{g} until either \texttt{g} is the perceived or impossible. To program this kind of commitment in \asl, we have to follow some pattern of programming requiring extra plans (three extra plans as proposed in~\cite{hubner:06b}).
+
+
+
+
 %%%RHB: The paragraph below isn't clear to me
 %  \bigskip The proposed approach allows us to avoid towers of subgoal
 %  calls, that are used when a plan does some action and then should
@@ -368,9 +394,6 @@ or to the body of subplans.
   Otherwise, the behaviour is like it is in pure AgentSpeak(L) --- the
   whole intention is removed and a \texttt{-!g} event is generated.
 
-[add example of Single Mind Commitment]
-[add example of disobedient agent]
-
 %\subsection{Discussion}
 % [TO BE COMPLETED]
 %
@@ -382,7 +405,7 @@ Before giving a more formal description of the semantics, we conclude this secti
 %
 \begin{description}
 %
-\item[Full encapsulation] -- The strategy to achieve a goal is encapsulated in one or multiple g-plans, each embedding also the reactive behaviour which is part of the strategy. 
+\item[Encapsulation] -- The strategy to achieve a goal is encapsulated in one or multiple g-plans, each embedding also the reactive behaviour which is part of the strategy. 
 %
 The effect is to reduce code fragmentation, improving its understanding.
 %
