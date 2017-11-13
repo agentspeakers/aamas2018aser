@@ -108,9 +108,9 @@ achieved means no further action would be necessary.
 % aborted. %%AR: isn't 'aborted' suggesting a kind of failure? 
 % JH: interrupted is also not but, since it will not be resumed, I changed to stop
 
-In {\aser} the body defines the g-plan scope enclosed by \texttt{\{}
-and \texttt{\}} and is composed of the body actions (after \texttt{<-}
-and before \texttt{.})  as well as subplans.
+In {\aser} the body defines the g-plan scope enclosed by `\texttt{\{}'
+and `\texttt{\}}' and is composed of the body actions (after `\texttt{<-}'
+and before `\texttt{.}')  as well as subplans.
 %
 Like in {\asl}, as soon as a g-plan is instantiated, the body actions
 start to execute. The body actions can be empty --- this is the case
@@ -155,7 +155,9 @@ be described in next section.
 %[TO BE COMPLETED?]
 %
 \subsection{Examples}
-To give a more concrete taste of the language,  we consider the examples seen in Section~\ref{sec:motivation}, rewritten in {\aser}. 
+To give a more concrete taste of the language, we consider again the
+examples seen in Section~\ref{sec:motivation}, now rewritten in
+{\aser}.
 %
 The robot cleaning example becomes:
 
@@ -168,16 +170,20 @@ The robot cleaning example becomes:
 \end{verbatim}
 \end{small}
 
-\noindent We can give an explicit reason for the reactive behaviour by encapsulating the e-plan inside a g-plan, with an explicit goal \texttt{clean\_env}.
+\noindent We can give an explicit reason for the reactive behaviour by
+encapsulating the e-plan inside a g-plan, with an explicit goal
+\texttt{clean\_env}.
 %
 Setting the goal condition to \texttt{false} means that the plan
-execution is going to last forever. It is a way to implement some form
-of maintenance goal.
+execution is going to last forever. It is a way of implementing some
+form of maintenance goal.
 %
-This is also a particular case where the body of the g-plan has no actions.
+This is also a particular case where the body of the g-plan does not
+have any actions.
 %
 
-The \texttt{elab\_nums} example seen before can be rewritten fully encapsulating the strategy in the same g-plan:
+The \texttt{elab\_nums} example seen before can be rewritten to fully
+encapsulate the strategy in the same g-plan:
 
 {\small
 \begin{verbatim}
@@ -188,9 +194,13 @@ The \texttt{elab\_nums} example seen before can be rewritten fully encapsulating
 }
 \end{verbatim}}
 
-\noindent Here \texttt{.body\_done} is a predefined internal action that succeeds when the body actions have been completed. The goal \texttt{elab\_nums} is achieved either by the perception of \texttt{stop} or by the execution of its body actions.
+  \noindent Here \texttt{.body\_done} is a predefined internal action
+  that succeeds when the body actions have been completed. The goal
+  \texttt{elab\_nums} is achieved either by the perception of
+  \texttt{stop} or by the execution of its body actions.
 %
-In case we want to take some action to react to \texttt{stop}, we can introduce an e-plan as follows:
+  In case we want to take some action to react to \texttt{stop}, we
+  can introduce an e-plan as follows:
 
 {\small
 \begin{verbatim}
@@ -202,7 +212,9 @@ In case we want to take some action to react to \texttt{stop}, we can introduce 
 }
 \end{verbatim}}
 
-For the example of plans to handle social obligations, we can define an explicit goal by encapsulating the e-plans in a g-plan as follows:
+  For the example of plans to handle social obligations, we can define
+  an explicit goal by encapsulating the e-plans in a g-plan as
+  follows:
 \begin{small}
 \begin{verbatim}
 +!be_obedient <: false {
@@ -213,9 +225,16 @@ For the example of plans to handle social obligations, we can define an explicit
 }
 \end{verbatim}
 \end{small}
-\noindent Now the agent can disable these plans by simply performing \texttt{. drop\_intention(be\_obedient)}, resumes its obedient behaviour by \texttt{!be\_obedient}, and verify whether it is being obedient by testing \texttt{.intend(be\_obedient)}.
+\noindent Now the agent can disable these plans by simply performing
+\texttt{. drop\_intention(be\_obedient)}, and resuming its obedient
+behaviour by adopting the goal \texttt{!be\_obedient}, and it can also
+check whether it is being obedient by testing
+\texttt{.intend(be\_obedient)}.
 
-With the new language, we can program different kinds of commitments to goals~\cite{cohen:90, winikoff:02} by exploting the goal condition. For instance, the Single Minded Commitment for goal \texttt{g} can be programmed as:
+With the new language, we can program different kinds of commitments
+to goals~\cite{cohen:90,winikoff:02} by exploting the goal
+condition. For instance, the Single Minded Commitment for goal
+\texttt{g} can be programmed as:
 \begin{small}
 \begin{verbatim}
 +!g <: g | f {
@@ -223,7 +242,11 @@ With the new language, we can program different kinds of commitments to goals~\c
 }
 \end{verbatim}
 \end{small}
-where \texttt{f} states when the goal becomes impossible. The agent commits to achieve \texttt{g} until either \texttt{g} is the perceived or impossible. To program this kind of commitment in \asl, we have to follow some pattern of programming requiring extra plans (three extra plans as proposed in~\cite{hubner:06b}).
+where \texttt{f} states when the goal becomes impossible. The agent
+commits to achieve \texttt{g} until \texttt{g} is believed either true
+or impossible to achieve. To program this kind of commitment in \asl,
+we have to follow some programming patterns requiring extra plans
+(three extra plans as shown in~\cite{hubner:06b}).
 
 
 
@@ -355,47 +378,63 @@ where \texttt{f} states when the goal becomes impossible. The agent commits to a
 
  \subsection{Failure Management}
 
-Failures generated by the execution of actions of sub-plans can be handled and managed:
+ Failures generated by the execution of actions of subplans for a
+ goal \texttt{g} can be handled and managed by:
 
+%%RHB: Carefull, changed but feel free to 
 \begin{itemize}
-\item by subplans listed in the body of the g-plan;
-\item by plans at the same level of +!g, if the event is not managed
-  within the body.
+\item subplans of type \texttt{-!g} listed in the body of the g-plan;
+\item plans at the same level of \texttt{+!g}, if the event is not
+  managed within the body.
 \end{itemize}
 
-\noindent In the latter case, the event representing the failure could
-be exactly \texttt{-!g}, as in Jason, i.e. the event which is
-generated when the goal is removed.
-%
-This strategy cannot be adopted in the former case, since we want to
-react to a failure but the corresponding goal and intention has not
-been removed yet, so no -!g event is generated. For this reason, we
-need to introduce a new event: \texttt{+/err\_term} [TEMPORARY SYNTAX]
-representing the failure of an action belonging to the main sequence
-or to the body of subplans.
-% RHB: I find this rather clumsy, besides not being formalised. Is it
-% worth going into details of a new mechanism for plan failure? We
-% could just claim it's as before plus now they can be inside the
-% g-plan IF YOU MUST :D
-% Besides, I can't see why we can't generate a -!g event even without
-% removing the rest of the intention (that's what Jason always did
-% anyway).
+\noindent In terms of style, it is more in keeping with the new
+language to include the failure plans within the scope of the
+g-plan. However, it is also true that if we define a plan for
+\texttt{+!g} at a certain level of a g-plan tree\footnote{Note that
+  g-plans within g-plans now implicitly form a plan tree for a
+  top-level goal, and the plan library is thus a forest of such
+  trees.}, it might make more sense to the programmer if the goals for
+\texttt{-!g} are all placed at the same level (specially if the
+programmer is influenced by the style of the Jason variant of
+AgentSpeak).
 
-{\small
-\begin{verbatim}
-+!g : c <: GoalCondition {
-  <- a; b; ? ; c. 
-  ...
-  +/err_term : cn <- bn
-}
-\end{verbatim}}
-
-  \noindent In the reasoning cycle, the \texttt{+/err\_term} is
-  treated as the other events: if an applicable plan is found, it is
-  selected and executed (in the same intention).
+% \noindent In the latter case, the event representing the failure could
+% be exactly \texttt{-!g}, as in Jason, i.e. the event which is
+% generated when the goal is removed.
 %
-  Otherwise, the behaviour is like it is in pure AgentSpeak(L) --- the
-  whole intention is removed and a \texttt{-!g} event is generated.
+% This strategy cannot be adopted in the former case, since we want to
+% react to a failure but the corresponding goal and intention has not
+% been removed yet, so no -!g event is generated. For this reason, we
+% need to introduce a new event: \texttt{+/err\_term} [TEMPORARY SYNTAX]
+% representing the failure of an action belonging to the main sequence
+% or to the body of subplans.
+%%
+%% RHB: I find this rather clumsy, besides not being formalised. Is it
+%% worth going into details of a new mechanism for plan failure? We
+%% could just claim it's as before plus now they can be inside the
+%% g-plan IF YOU MUST :D
+%% Besides, I can't see why we can't generate a -!g event even without
+%% removing the rest of the intention (that's what Jason always did
+%% anyway).
+
+%% RHB: I'm changing this as discussed with Jomi but feel free to
+%% bring it back
+% {\small
+% \begin{verbatim}
+% +!g : c <: GoalCondition {
+%   <- a; b; ? ; c. 
+%   ...
+%   +/err_term : cn <- bn
+% }
+% \end{verbatim}}
+
+%   \noindent In the reasoning cycle, the \texttt{+/err\_term} is
+%   treated as the other events: if an applicable plan is found, it is
+%   selected and executed (in the same intention).
+% %
+%   Otherwise, the behaviour is like it is in pure AgentSpeak(L) --- the
+%   whole intention is removed and a \texttt{-!g} event is generated.
 
 %\subsection{Discussion}
 % [TO BE COMPLETED]
@@ -404,40 +443,62 @@ or to the body of subplans.
 %
 \subsection{Key points}
 
-Before giving a more formal description of the semantics, we conclude this section by summarising the key points brought in {\aser}:
+Before giving a more formal description of the semantics, we conclude
+this section by summarising the key points brought out by {\aser}:
 %
 \begin{description}
 %
-\item[Encapsulation] -- The strategy to achieve a goal is encapsulated in one or multiple g-plans, each embedding also the reactive behaviour which is part of the strategy. 
+\item[Encapsulation] -- The strategy to achieve a goal is encapsulated
+  in one or multiple g-plans, each embedding also the reactive
+  behaviour which is part of the strategy.
 %
-The effect is to reduce code fragmentation, improving its understanding.
+  The effect is to reduce code fragmentation, improving its
+  understanding.
 %
-\item[Explicit goals] -- Every behaviour of the agent is now explicitly related to some goal to achieve.
+\item[Explicit goals] -- Every behaviour of the agent is now
+  explicitly related to some goal to achieve.
 %
-This effect is to enforce a more goal-oriented programming style, yet preserving the possibility to easily define g-plans based on pure reactive strategy;
+  This promotes a more goal-oriented programming style, yet preserving
+  the possibility to easily define g-plans based on purely reactive
+  strategies;
 %
-this allows the agent to better \emph{manage} its intentions. For instance, a programmer can now do a simple \texttt{.drop\_intention(g)} to disable the behavior of e-plans embedded in the corresponding g-plans. 
+  this allows the agent to better \emph{manage} its intentions. For
+  instance, a programmer can now do a simple
+  \texttt{.drop\_intention(g)} to disable the behavior of e-plans
+  embedded in the corresponding g-plans.
 %
 % In {\asl} this is quite tricky to do.
-In {\asl}, the relation goal-intention is not one-to-one. {\asl} can have intentions from e-plans and then intentions without a explicit related goal. 
-In {\aser} there is a one-to-one relation between goal-intention. 
+In {\asl}, the relation goal-intention is not one-to-one. {\asl} can have intentions from e-plans and so intentions without a explicitly represented goal. 
+In {\aser} there is a one-to-one relation between goals and intentions. 
 %
-All intention comes from a goal (only explicit goals are allowed). 
+All intentions come from goals (only explicit goals are allowed). 
 %
 Primitives to handle goals can thus handle \emph{all} intentions. 
 %
-In {\asl} primitives to handle goals can manage a limited set of the intentions (those created from g-plans). 
+In {\asl}, primitives to handle goals can manage a limited set of the
+intentions (those created from goal addition plans).
 
 
-\item[Simplified failure handling] -- Failures/errors generated in the  body of e-plan can now be directly captured and managed, without the need to auxiliary goals and plans to introduced.
+\item[Simplified failure handling] -- Failures/errors generated in the
+  body of an e-plan can now be directly captured and managed, without the
+  need for auxiliary goals and plans to be introduced.
 
-\item[Coarse-grained intentions] -- In {\asl}, each e-plan in execution has its own intention/stack, which runs concurrently to the other intentions. Conceptually, this follows the idea that that the management of environment events are not part of an existing plan to achieve some goal.
+\item[Coarse-grained intentions] -- In {\asl}, each e-plan in
+  execution has its own intention/stack, which runs concurrently to
+  the other intentions. Conceptually, this follows the idea that
+  the management of environment events are not part of an existing
+  overall plan to achieve some goal.
 %
-In the new model instead, an e-plan inside a g-plan is meant to specify a behaviour useful for achieving the goal of the g-plan, so part of the same intention.
+  In the new model instead, an e-plan inside a g-plan is meant to
+  specify a behaviour that is useful for achieving the goal of the
+  g-plan, so part of the same intention.
 %
-For this reason, the an e-plan (subplan) inside a g-plan in execution is triggered, no new intentions are generated and the body of the sub-plan is placed on the top of the stack of the same intention. 
+  For this reason, if an e-plan (subplan) inside a g-plan in
+  execution is triggered, no new intentions are generated and the body
+  of the subplan is placed on the top of the stack of the same
+  intention.
 %
-The new model leads than to have more coarse-grained intentions.
+  The new model leads then to more coarse-grained intentions.
 %
 %%% JH: commented for now, while we are discussing it
 %The general effect is to reduce the number of intentions. 
