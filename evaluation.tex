@@ -12,7 +12,7 @@ the syntactic approach adopted in ASTRA. It does not impact the associated seman
 
 {\small
 \begin{verbatim}
-g-rule +!g() : c <: gc { 
+g-plan +!g() : c <: gc { 
   body {
     // main plan body goes here...
     a; b; !g1(); !!g2();
@@ -23,13 +23,6 @@ g-rule +!g() : c <: gc {
   rule +e2 : c2 { b2; }
 }
 \end{verbatim}}
-
-\begin{figure}[!bh]
-\centering
-\includegraphics[height=2in, width=2.5in]{mg.png}
-\caption{Minority Game Agent Architecture}
-\label{fig:mgagents}
-\end{figure}
 
 \subsection{Minority Game}
 \label{minority}
@@ -44,7 +37,15 @@ the Minority Game MG). As is shown in figure \ref{fig:mgagents}, the implementat
 3 types of agent: the \emph{compere} agent, who is responsible for managing the game (starting 
 rounds, evaluating bids, ...); the \emph{player} agent, who implements a set of MG strategies; 
 and the \emph{main} agent, which is responsible for configuring the game (creating and configuring
-the compere and player agents).
+the compere and player agents). Interaction between the Compere and the Players is through a shared 
+game-board artifact.
+
+\begin{figure}[!tbh]
+\centering
+\includegraphics[height=2in, width=2.5in]{mg.png}
+\caption{Minority Game Agent Architecture}
+\label{fig:mgagents}
+\end{figure}
 
 The existing implementation currently consists of 10 plans. Two of the plans are generic and are
 used for configuration. Another plan implements the bidding behaviour, delegating to a 
@@ -52,61 +53,98 @@ used for configuration. Another plan implements the bidding behaviour, delegatin
 Of the remaining plans: four relate to the best play strategy; one relates to a random strategy;
 and two relate to a sticky strategy.
 
-In the {\aser} implementation, we reduce this to 4 of the new g-rules: one to handle configuration
-and one for each of the strategies. The code below illustrates this new model through the
-revised implementation of the best play strategy.
+In the {\aser} implementation, we reduce this to 3 of the new g-plans - one for each of the 
+strategies - and one traditional plan to handle initialization. The code below consists of
+the initialisation plan and a single g-plan representating the revised implementation of the 
+best play strategy.
 
 {\small
 \begin{verbatim}
-  g-rule +!win("bestplay", [int t, int h]) <: false {
-    body {
-      !setup_tactic(t);
-    }
+rule +!main([string strategy, list config]) {
+  !!win(strategy, config); A.join();
+}
 
-    rule +!setup_tactic(0) {}
-    rule +!setup_tactic(int t2) {
-      list hist = [];
+g-plan +!win("bestplay", [int t, int h]) <: false {
+  body { !setup_tactic(t); }
+
+  rule +!setup_tactic(0) {}
+  rule +!setup_tactic(int t2) {
+    list hist = [];
 			
-      // construct a random history
-      int i=0;
-      while (i<h) {
-        hist = hist + [M.randomInt() % 2];
-        i++;
-      }
-			
-      +strategy(t2, hist, M.randomInt() % 2);
-      +score(t2, 0);
-		
-      !setup_tactic(t2-1);
+    // construct a random history
+    int i=0;
+    while (i<h) {
+      hist = hist + [M.randomInt() % 2];
+      i++;
     }
+    +strategy(t2, hist, M.randomInt() % 2);
+    +score(t2, 0);
 		
-    rule $A.event("play", []) { 
-      list history = A.results();
+    !setup_tactic(t2-1);
+  }
+		
+  rule $A.event("play", []) { 
+    list history = A.results();
 			
-      int max_len = -1;
-	  int max_choice = -1;
-	  int max_score = -1;
-	  foreach (strategy(int s, list hist, int c) & score(s, int sc)) {
-	    int len = A.match(history, hist);
-        if ((len > max_len) | ((len == max_len) & (max_score < sc))) {
-          max_choice = c;
-          max_score = sc;
-          max_len = len;
-        }
+    int max_len = -1; int max_choice = -1;
+    int max_score = -1;
+    foreach (strategy(int s, list hist, int c) 
+              & score(s, int sc)) {
+      int len = A.match(history, hist);
+      if ((len > max_len) | 
+          ((len == max_len) & (max_score < sc))) {
+        max_choice = c; max_score = sc;
+        max_len = len;
       }
-		
-      A.bid(max_choice);
     }
-		
-    rule $A.event("winner", [int bid]) {
-	  foreach (strategy(int s, list hist, bid) & score(s, int sc)) {
-        -+score(s, sc+1);
-      }
+    A.bid(max_choice);
+  }
+
+  rule $A.event("winner", [int bid]) {
+    foreach (strategy(int s, list hist, bid) 
+           & score(s, int sc)) {
+      -+score(s, sc+1);
     }
   }
+}
 \end{verbatim}}
 
-Explain this code a bid...
+In this code, the variable A represents the game board, which is implemented
+as an ASTRA module \cite{DBLP:conf/prima/CollierRL15}. Modules allow the developer
+to create custom actions, sensors, (logical) terms, (logical) formulae, and events.
+For example, \verb|A.join()| is a custom action to allow the agent to join the
+game board; \verb|A.match(history, hist)| is a custom term that return the length
+of the longest common suffix of the \verb|history| and \verb|hist| lists; and
+\verb|$A.event(...)| is a custom event that is generated when the Compere agent
+starts a new round.
+
+In terms of the behaviour implemented by the above code. The initialisation plan
+selects the game strategy to be employed by the player. This information is
+passed via the \verb|!main(...)| goal; the ASTRA equivalent of a main method.
+When the handles the event corresponding to this goal, it spawns a new intention
+to achieve the \verb|!win(...)| goal (spawning is like forking in multi-processing
+and is denoted the double exclamation mark).
+
+In the case that the chosen strategy is \emph{bestplay}, the agent achieves the goal 
+by selecting the \verb|!win("bestplay", ...)| g-plan. Upon adoption, the body of this
+plan is executed, which in this case creates a random set of strategies that are to
+be used by the agent to select its bid. This involves adopting the \verb|!setup_tactic()|
+subgoal which is handled by the first two rules within the g-plan. The start of a
+round is modelled through the custom event \verb|$A.event("play", [])|. The rule that
+is selected to handle this event chooses the best strategy from the set of strategies
+available to the agent. Finally, the end of a round is modelled through the custom event
+\verb|$A.event("winner", [int bid])|. The rule that is selected to handle this event
+updates the score for all strategies that lead to \verb|bid| being selected.
+
+Some interesting observations from adapting the code were: (i) the compexity of the
+plan contexts were simplified when using g-plans because the g-plan itself provided 
+some of the context; (ii) the number of arguments passed as parameters was reduced,
+again because the scope of the parameters of the g-plan was the plan body \emph|and|
+all of its sub-plans; (iii) the total number of rules under consideration on each
+iteration was significantly less because only the rules within an active g-plan were
+considered by the agent - for example, in the original implementation, there was always
+at least one applicable \verb|!select_bid()| plan per strategy, however in the new 
+implementation, only the plans related to the current strategy were applicable.
 
 \subsection{Preliminary Analysis}
 \label{performance}
