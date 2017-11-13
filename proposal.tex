@@ -95,20 +95,22 @@ considered as achieved\footnote{Or considered impossible to achieve,
   pursued. Note that, when programming declaratively, this condition
   is likely to include the goal in the triggering event itself (as
   believed to be true).}. Any goal created based on this g-plan is
-considered achieved if % and only if
+considered achieved if and only if
 %% RHB: isn't if and only if too strong?
+%% Jomi is probably right, keeping if and only if
 this condition holds. If no goal condition is specified, the goal is
 considered achieved as soon as the body execution completes, as usual
 in \asl. However, if a goal condition is defined, having finished the
-body execution is not sufficient to achieve the goal. Notice that if
-the goal condition becomes true while the body actions are being
-executed, the execution stops since it is not necessary anymore to achieve the goal. 
+body execution is not sufficient to deactivate the goal. Notice that
+if the goal condition becomes true while the body actions are being
+executed, the execution ceases immediately, since the goal being
+achieved means no further action would be necessary.
 % aborted. %%AR: isn't 'aborted' suggesting a kind of failure? 
 % JH: interrupted is also not but, since it will not be resumed, I changed to stop
 
-In {\aser} the body defines the g-plan scope enclosed by \texttt{\{} and \texttt{\}} and is
-composed of the body actions (after \texttt{<-} and before \texttt{.})
-as well as subplans. 
+In {\aser} the body defines the g-plan scope enclosed by \texttt{\{}
+and \texttt{\}} and is composed of the body actions (after \texttt{<-}
+and before \texttt{.})  as well as subplans.
 %
 Like in {\asl}, as soon as a g-plan is instantiated, the body actions
 start to execute. The body actions can be empty --- this is the case
