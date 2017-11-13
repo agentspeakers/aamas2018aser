@@ -127,7 +127,7 @@ current ongoing intention:
 \begin{verbatim}
 +!elab_nums(0).
 +!elab_nums(N) <- !elab(N); !print_nums(N-1).		
-+stop <- .abort(elab_nums(_)).
++stop <- .drop_intention(elab_nums(_)).
 \end{verbatim}
 \end{small}
 %% RHB: should we change .abort to .drop_intention ?
