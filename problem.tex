@@ -17,11 +17,14 @@ agent should satisfy an end~\cite{Rao96}.
 %
 In {\asl} a plan consists of a rule of the kind \textsf{e : c <- b}.
 %
-The head of a plan consists of a triggering event \textsf{e} and a context \textsf{c}.
+The head of a plan consists of a triggering event \textsf{e} and a
+context \textsf{c}.
 %
-The triggering event specifies why the plan was triggered, i.e., the addition or deletion of a belief or goal. 
+The triggering event specifies why the plan was triggered, i.e., the
+addition or deletion of a belief or goal.
 %
-The context specifies those beliefs that should hold in the agent's set of base beliefs, when the plan is triggered. 
+The context specifies those beliefs that should hold in the agent's
+set of base beliefs if the plan is to be triggered.
 %
 The body of a plan is a sequence of actions or (sub-)goals.
 %
@@ -70,7 +73,9 @@ and this allows us to write down structured plans with courses of
 actions that change according to the environment, by exploiting
 goals/subgoals and contexts.
 %
-For instance, as a very simple example, yet capturing the point, let us consider the goal of  printing down all the numbers between N and 1, stopping if/when a 'stop' percept is perceived. 
+For instance, as a very simple example, yet capturing the point, let
+us consider the goal of printing down all the numbers between N and 1,
+stopping if/when a 'stop' percept is perceived.
 %
 This task can be effectively tackled using only g-plans:
 
@@ -189,8 +194,8 @@ goal, which is about cleaning the environment.
 However, since there are no g-plans about it, there is no explicit
 trace in the agent mental structures about this goal.
 
-This problem can be also illustrated in the following
-scenario. Considering an agent that includes a set of plans (a module
+This problem can also be illustrated with the following
+scenario. Consider an agent that includes a set of plans (a module
 written by a third party) to handle social obligations. The module has
 several e-plans for the different types of obligations:
 \begin{small}
@@ -201,8 +206,16 @@ several e-plans for the different types of obligations:
 ...
 \end{verbatim}
 \end{small}
-If for some reason during its execution an agent decides to not follow these plans anymore (e.g.\ it decides to be disobedient), it is difficult to ``disable'' the behaviour of the above plans. Either these plans have to be changed to consider a particular state of the agent or the agent removes these plans form its plan library. Neither option is simple to program. % suitable: the third party code could be not modified; we do not have references for these plans to remove them.
-Although we can solve the problem, the lack of an explicit goal stating that the agent intends to be obedient is the cause of this problem.
+If for some reason during its execution an agent decides not to follow
+these plans anymore (e.g.\ it chooses to become disobedient), it is
+difficult to ``disable'' the behaviour of the above plans. Either
+these plans have to be changed to consider a particular state of the
+agent or the agent removes all these plans from its plan
+library. Neither option is simple to
+program. % suitable: the third party code could be not modified; we do not have references for these plans to remove them.
+Although we can solve the problem, the lack of an explicit goal
+stating that the agent intends to be obedient is the cause of this
+problem.
 
 %It is worth remarking that it is possible to bypass the problem in concrete languages (e.g. {\jason}), by exploiting specific features/tricks. 
 %%
@@ -263,15 +276,20 @@ plan model in the practice of agent programming:
 \begin{description}
 %
 \item[Lack of encapsulation:] The strategy to achieve a goal is
-  fragmented among multiple plans, not explicitly related.
+  fragmented among multiple plans, not explicitly related to each
+  other.
 %
-\item[Implicit vs. Explicit goals:] A part of the plans in a program
-  have a goal which is implicit.
+\item[Implicit vs. Explicit goals:] Some parts of an agent program may
+  have plans for which the goal is implicit.
 %
 \item[Difficult failure handling:] Failures/errors generated in the
   body of e-plan cannot be directly captured.
 %
 \end{description}
+%%RHB: Are we not talking about the goal-condition and the fact that
+%%external events can trigger various plan, one for each intention??
+
+
 
 %\noindent This has an impact also on the performance of the agent
 %interpreter at runtime. In the traditional model, each reaction
@@ -287,10 +305,9 @@ plan model in the practice of agent programming:
 %\item[Runtime overhead] Each reaction (e-plans) is   new intention => new stack. 
 
 
-\noindent Besides the pure programming level, it is worth noting that these
-issues can affect the %whose
-software engineering process concerning
-agent development.
+\noindent Besides the pure programming level, it is worth noting that
+these issues can affect the %whose
+software engineering process for agent development.
 %%
 In particular, at the design level, it is natural to specify
 coarse-grained plans fully encapsulating the strategy to achieve or
