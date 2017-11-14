@@ -24,7 +24,7 @@ that are needed to accomodate the new features of AgentSpeaker(ER):
   applicable plans.
 \end{itemize}
 
-We start by updating the well-known reasoning cycle~\cite{JasonBook}
+We start by updating the well-known reasoning cycle~\cite{bordini:07}
 to adapt it for the initial stage of checking all goal-conditions to
 remove the intentions that should no longer be active. Furthermore,
 note that even though this is computationally costly, it is necessary
@@ -62,7 +62,7 @@ Figure~\ref{fig:rcaser}.
 \end{figure}
 
 The $\ClrInt$ stage also needs new semantic rules. In fact, the
-previous 3 \rn{ClrInt} rules (see~\cite[p~212]{JasonBook}) are no
+previous 3 \rn{ClrInt} rules (see~\cite[p~212]{bordini:07}) are no
 longer needed, as empty intentions are not to be removed from the set
 of intentions, unless their goal condition becomes true. To facilitate
 the presentation of the new rules, we define a new auxiliary function
@@ -101,7 +101,7 @@ removed together with it.
 
 The auxiliary functions $\RELPLANS(\PLANS,\TE)$
 $\APPLPLANS(\PLANS,\TE)$ (see Definitions~10.2 and~10.3
-in~\cite{JasonBook}) can be changed to accommodate both the new g-plan
+in~\cite{bordini:07}) can be changed to accommodate both the new g-plan
 structure as well as the firing of e-plans (i.e., plans for reacting
 to external events) for all intentions rather than creating a single
 new separate intention as before. First, the redefined functions now
