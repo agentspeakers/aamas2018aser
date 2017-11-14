@@ -67,8 +67,8 @@ custom term that return the length of the longest common suffix of the \verb|his
 Compere agent starts a new round.
 
 The initialisation plan selects the game strategy to be employed by the player. This information
- is passed via the \verb|!main(...)| goal; the ASTRA equivalent of a main method. When the handles
-the event corresponding to this goal, it spawns a new intention to achieve the \verb|!win(...)| 
+ is passed via the \verb|main(...)| goal; the ASTRA equivalent of a main method. When the handles
+the event corresponding to this goal, it spawns a new intention to achieve the \verb|win(...)| 
 goal (spawning is like forking in multi-processing and is denoted the double exclamation mark).
 
 In the case that the chosen strategy is \emph{bestplay}, the agent achieves the goal by selecting 
@@ -138,14 +138,14 @@ the number of arguments passed as parameters was reduced, again because the scop
 of the g-plan was the plan body \emph|and| all of its sub-plans; (iii) the total number of rules 
 under consideration on each iteration was significantly less because only the rules within an 
 active g-plan were considered by the agent - for example, in the original implementation, there 
-was always at least one applicable \verb|!select_bid()| plan per strategy, however in the new 
+was always at least one applicable \verb|+!select_bid()| plan per strategy, however in the new 
 implementation, only the plans related to the current strategy were applicable.
 
 \subsection{Preliminary Analysis}
 \label{performance}
 
-To evaluate our prototype, we have compared the {\aser} and ASTRA implementations. Initially,
-we compared interpreter cycle execution time and the number of iterations. We did this for a
+We evaluate the prototype by comparing the {\aser} and ASTRA implementations. Initially,
+we compared interpreter cycle execution time and the number of iteration based on a
 single configuration of the MG with 29 players and 1000 rounds. For our results, we averaged
 the values across all 29 players and repeated the experiment 5 times.
 
@@ -155,14 +155,14 @@ the values across all 29 players and repeated the experiment 5 times.
 \label{comparison}
 \begin{tabular}{lll}
                       & ASER    & ASTRA  \\
-Interpreter Time (ms) & 0.0017  & 0.0036 \\
-Cycles                & 293,772 & 62,880 \\
-ExecutionTime (ms)    & 495.22  & 229.29 \\
-Unix (timed)          & 16s     & 15s   
+Cycle Time (ms)             & 0.0017  & 0.0036 \\
+Cycles                      & 293,772 & 62,880 \\
+Elapsed Execution Time (ms) & 495.22  & 229.29 \\
+Unix (timed)                & 16s     & 15s   
 \end{tabular}
 \end{table}
 
-Results of our initial comparison can be found above in table \ref{comparison}. The difference
+Results of our initial comparison can be found in table \ref{comparison}. The difference
 in the number of cycles is due primarily to the scheduling algorithm used by ASTRA, which
 suspends agents that have no sensors (perceptors) and whose event and intention queues are empty.
 The impact of this is that ASTRA is generally more efficient than {\aser}. Due to the small but 
@@ -186,8 +186,8 @@ This second table shows that {\aser} has a small impact on performance, but it i
 almost linear in this case (ASTRA shows a performance improvement of between 2-6%).
 
 While this is not a thorough evaluation of {\aser}, it does hint that the use of
-goal conditions does not significantly impact the performance of the language. Further,
-it must be noted that the prototype implementation is not as mature as the ASTRA
-implementation, and that interpreter optimisations could further reduce the difference 
+goal conditions does not significantly impact the performance of the language. It 
+must also be noted that the prototype implementation is not as mature as the ASTRA
+implementation - interpreter optimisations could further reduce the difference 
 in performance.
 
