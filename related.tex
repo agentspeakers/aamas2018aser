@@ -21,4 +21,6 @@ The lookahead planning makes it possible to guarantee goal achievability and avo
 %
 The plan model adopted in {\textsf{CANPlan}} is analogous to the {\asl} one. Each plan is characterised by a plan rule \textsf{e(t) : $\psi$(xt, y) $\leftarrow$ P(xt, y, z).}, where \textsf{P} is a ``reasonable strategy'' to follow when \textsf{$\psi$} is believed true in order to resolve/achieve the event.
 %
-\textsf{P} can be a rich composition of actions, possibly concurrent, not modeling handling behaviours, which can be expressed instead --- like in {\asl} and in the basic BDI --- as separate plans handling belief updates corresponding  to environment events. 
+\textsf{P} can be a rich composition of actions but not reactions.  
+%
+Reactive behaviours can be expressed instead --- like in {\asl} and in the basic BDI --- as separate plans handling belief updates corresponding  to environment events. 

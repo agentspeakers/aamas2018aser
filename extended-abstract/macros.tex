@@ -1,0 +1,46 @@
+\newcommand{\code}[1]{\texttt{#1}}
+
+\newcommand{\aser}{\textsf{AgentSpeak(ER)}}
+\newcommand{\asl}{\textsf{AgentSpeak(L)}}
+\newcommand{\jason}{\textsf{Jason}}
+\newcommand{\AandA}{\textsf{A\&A}}
+\newcommand{\aanda}{\textsf{A\&A}}
+\newcommand{\moise}{\textsf{MOISE}}
+\newcommand{\cartago}{\textsf{CArtAgO}}
+\newcommand{\jacamo}{\textsf{JaCaMo}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\commenttoby}[3]{\sm{#1}{#2 \textbf{--#3}}}
+\newcommand{\ste}[2]{\sm{#1}{#2 \textbf{--Ste}}}
+\newcommand{\FORGET}[1]{}
+\newcommand{\tba}[1]{\color{blue} TO BE ADDED: #1 \color{black}}
+\newcommand{\ale}[1]{\color{blue} [ALE]: #1 \color{black}}
+\newcommand{\more}{\color{blue} [...] \color{black}}
+\newcommand{\tbc}[1]{\color{red} TO BE CLARIFIED: #1 \color{black}}
+% \newcommand{\todo}[1]{\color{red} TODO: #1 \color{black}}
+\newcommand{\tbd}[1]{\color{orange} TO BE DISCUSSED: #1 \color{black}}
+\newcommand{\FIXME}[1]{{{\bf \color{red}{#1}}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\definecolor{aserkeyword}{RGB}{127,0,85}
+\definecolor{aserstring}{RGB}{42,0,255} % strings
+\definecolor{asercomment}{rgb}{0.25,0.5,0.35} % comments
+\lstdefinelanguage{aser}{    
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morekeywords={interface, class, workspace, tasks, public-tasks, this, public, private,true, false, boolean, int},
+    otherkeywords = {agent-script,  do, do-par, is-done, plan-for, task, init-task, as:, private, implements, done:, env, if, new-obj, new-agent,await, org-config},
+    sensitive=true,
+    morestring=[b]",
+}
+
+%\lstset{language=aser}
+\lstset{basicstyle=\scriptsize\ttfamily\bfseries, keywordstyle=\color{aserkeyword}}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1}
+\lstset{stringstyle=\color{aserstring}, columns=flexible}
+\lstset{commentstyle=\color{asercomment}}
+\lstset{showstringspaces=false}
+
