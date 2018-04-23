@@ -187,22 +187,26 @@
 %
 % About AgentSpeak(L)
 %
-{\asl} has been introduced in \cite{Rao96}  with the purpose of defining an expressive, 
-abstract language capturing the main aspects of the Belief-Desire-Intention architecture~\cite{Bratman88,Georgeff:1987:RRP:1863766.1863818}, featuring a formally defined semantics and an abstract interpreter.
+{\asl} was introduced in \cite{Rao96} with the purpose of defining an
+expressive, abstract language capturing the main aspects of the
+Belief-Desire-Intention
+architecture~\cite{Bratman88,Georgeff:1987:RRP:1863766.1863818},
+featuring a formally defined semantics and an abstract interpreter.
 %
-The starting point to define the language were real-world implemented systems, e.g.,
+The starting point to define the language was implemented systems such
+as the
 Procedural Reasoning System (PRS)~\cite{Ingrand:1992:ARR:629535.629890}.
 % and the Distributed Multi-Agent Reasoning System (dMARS).
 %
 %
 % Contribution
 %
-Existing Agent Programming Languages extended the language with
+Various Agent Programming Languages extended {\asl} with
 constructs and mechanisms making it practical from a programming point
 of view~\cite{jason06,DBLP:conf/prima/CollierRL15}.
 
 %
-Along this line, in this paper we describe a novel extension of the
+Along this line, this paper describes a novel extension of the
 {\asl} model --- called {\aser} --- featuring \emph{plan
   encapsulation}, i.e. the possibility to define plans that fully
 encapsulate the strategy to achieve the corresponding goals,
@@ -228,10 +232,10 @@ architecture.
 
 % \subsection{Plan encapsulation}
 %
-In the BDI model, plans are meant to specify the means by which an
-agent should satisfy an end~\cite{Rao96}.
+In the BDI model, plans are meant to specify some means by which an
+agent can satisfy an end~\cite{Rao96}.
 %
-In {\asl} a plan consists of a rule of the kind \textsf{e : c <- b}.
+In {\asl}, a plan consists of a rule of the kind \textsf{e : c <- b}.
 %
 The head of a plan consists of a triggering event \textsf{e} and a
 context \textsf{c}.
@@ -240,11 +244,11 @@ The triggering event specifies why the plan was triggered, i.e., the
 addition or deletion of a belief or goal.
 %
 In the following, we refer to plans triggered by event goals
-as \emph{g-plans}, and plans triggered by the
+as \emph{g-plans}, and plans triggered by
 belief change (including percepts) as \emph{e-plans}.
 %
-The context specifies those beliefs that should hold in the agent's
-set of base beliefs if the plan is to be triggered.
+The context specifies those beliefs that should hold given the agent's
+current belief base if the plan is to be triggered.
 %
 The body of a plan is a sequence of actions or (sub-)goals.
 %
@@ -253,63 +257,60 @@ The body of a plan is a sequence of actions or (sub-)goals.
 % THE PROBLEM
 %
 In this approach --- as well as in planning, in general --- the
-\emph{means} to achieve a goal --- i.e., the body --- is meant to be
+\emph{means} to achieve a goal (i.e., the plan body) is meant to be
 fully specified in terms of the actions the agent should execute and
 the (sub-)goals the agent should achieve or test.
 %
-In the programming practice, however, it is often the case that the
-strategy (the means) adopted to achieve some goal (the end) would
-naturally include also \emph{reactions}, i.e., reacting to events
-asynchronously perceived from the environment, including changes about
-the beliefs.
+In practice, when programming such systems, it is often the case that
+the strategy (the means) adopted to achieve some goal (the end)
+naturally includes ractions --- i.e., reacting to events asynchronously
+perceived from the environment, including changes in the beliefs.
 % 
-That is, an agent is not reacting only to unexpected events so as to
-change/adapt its course of actions, but reactivity could be an
-effective ingredient of the strategy, of the plan adopted to achieve
-some goal.
+This reflects more than just the ability of an agent to change/adapt
+its course of actions; it allows the integration of reactivity as a
+core ingredient of the strategy to achieve some goal.
 %
-Besides the programming practice, this is often the case if we
-consider human activities too. Reactivity is a key ingredient of many
+This revised notion of a plan is not just a programming feature; it
+also occurs naturally in human activity. For example, a fisherman with
+the goal of catching fish waits for the event of a tug on their line
+indicating a fish is on the hook. Reactivity is a key ingredient of many
 activities that we perform to achieve specific goals, not only to
 handle events that represents errors or unexpected situations (for the
 current courses of actions).
 %
 It follows naturally that this is also an opportunity to extend the
-plan model so as to fully \emph{encapsulate} also reactions that are
+plan model so as to fully \emph{encapsulate} reactions that are
 part of the strategy to achieve the goal, as well as the subgoals that
 are specific to that particular goal.
 
-
-
 %
-Let us consider the robot cleaning example used to describe plans in
-{\cite{Rao96}}.
+Let us consider the robot cleaning example used to describe plans
+in~\cite{Rao96}. 
 %
 One of the plans is:
 
 \begin{small}
 \begin{verbatim}
-+location(waste,X):location(robot,X) & location(bin,Y)
++location(waste,X) : location(robot,X) & location(bin,Y)
   <- pick(waste); !location(robot,Y); drop(waste).
 \end{verbatim}
 \end{small}
 
-\noindent That is, as soon as the robot perceives that there is a
-waste in its location, then it can pick it up and bring it to the bin.
+\noindent That is, as soon as the robot perceives that there is
+waste at its location, then it can pick it up and bring it to the bin.
 %
-This plan an essential brick of the overall strategy to achieve the
-goal of cleaning the environment --- or to maintain the environment
-clean, in a \emph{maintenance goal} view.
-%
-However, the fact that this plan is useful to achieve that goal is not
-explicit in the source code, it remains in the mind of the
-programmer/designer.
-%
-The agent reacts to a waste in a location because it has an implicit
-goal, which is about cleaning the environment.
-%
-However, since there are no g-plans about it, there is no explicit
-trace in the agent mental structures about this goal.
+This plan is an essential brick of the the overall strategy to achieve
+the goal of cleaning the environment. The problem here is that it is
+an implicit rather than explicit goal of the agent (it is done
+regardless of the agent currently having the goal of keeping the
+environment clean). In practice, we adopt a maintenance
+goal~\cite{Duff:2006:PMG:1160633.1160817} to clean the environment,
+which includes reacting to cleaning up waste when we see it. In the
+above program, this notion cannot be represented and remains in the
+mind of the programmer/designer; as there is no g-plan for it, there
+is no explicit trace in the agent mental structures about this
+goal. It is the ability to explicitly implement this type of behaviour
+that motivates the work presented in this paper.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -317,20 +318,17 @@ trace in the agent mental structures about this goal.
 \label{sec:proposal}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-{\aser} extends the plan model of {\asl}  beyond the simple sequence of
-actions and goals, so as to \emph{(i)} include also the possibility to specify
-reactive behaviour encapsulated within the plan, in terms of e-plans;  \emph{(ii)}  
- enforcing that each e-plan would be defined always in the scope
-of some g-plan---i.e., reactions occur always in the context of some 
-explicit designed goal to achieve.
+{\aser} extends the plan model of {\asl} beyond the simple sequence of
+actions and goals, so as to \emph{(i)} include the possibility of
+specifying reactive behaviour encapsulated within the plan, by means
+of e-plans; \emph{(ii)} require that e-plans are always defined within
+the scope of some g-plan (i.e., reactions occur always in the context
+of some explicit designed goal to be achieved).
 
-The {\aser} syntax for plan definition extends the {\asl} as follows:
+The {\aser} syntax for plans extends {\asl} as follows:
 
 {\small
 \begin{verbatim}
-
-/*  g-plans to achieve goal g in context c */
-
 +!goal : context <: goal_cond { 
 
   <- ... // main sequence (body actions)
@@ -345,8 +343,8 @@ The {\aser} syntax for plan definition extends the {\asl} as follows:
     +e3 : c3 <- ... // possible old-style plans
   }	
 
-  /* encapsulated e-plans catching failures */
-  -!g1 : ... <- ... catches from failures 
+  /* encapsulated plans catching failures */
+  -!g1 : ... <- ... // handles failures in pursuing g1
 }
 \end{verbatim}}
 
@@ -360,7 +358,7 @@ actions (referred as \emph{body actions}), ($ii$) a set of
 \emph{e-plans}, specifying a reactive behaviour which is active at
 runtime only when the plan is in execution, and ($iii$) a set of
 \emph{g-plans}, specifying plans to achieve subgoals that are relevant
-only in the scope of this plan. The e-plans and g-plans are referred
+only in the scope of that plan. The e-plans and g-plans are referred
 to as \emph{sub-plans}.
 %
 The sub-plans may include also reactions to failures occurring when
@@ -378,10 +376,10 @@ The robot cleaning example becomes:
 \end{small}
 %
 \noindent We can give an explicit reason for the reactive behaviour by
-encapsulating the e-plan inside a g-plan, with an explicit goal \texttt{clean\_env}.
+encapsulating the e-plan within a g-plan, with an explicit goal \texttt{clean\_env}.
 %
-This is also a particular case where the body of the g-plan does not
-have any actions.
+This is also a particular case where the body of the g-plan happens
+not to have any actions.
 
 %
 %% RHB: So the failure handling plans for the outer goal were moved
@@ -391,33 +389,47 @@ have any actions.
 Informal semantics of the extended plan model:
 \begin{itemize}
 
-\item The sub-plans are part of the strategy which can be applied to achieve the g-plan.
+\item The sub-plans are part of the strategy which can be applied to
+  achieve the g-plan.
 %
-The main sequence (body actions) can be empty---this is typical of purely reactive behaviours.
+  The main sequence (body actions) can be empty --- this is typical of
+  purely reactive behaviour.
 %
-If an event triggering a sub-plan is triggered while the g-plan is executing, i.e. the main sequence 
-is in execution, and the sub-plan is applicable according to the context, then the body of the sub-plan 
-is stacked on top of the stack of the current (g-plan related) intention.
+  If an event matches the triggering event of a sub-plan while the
+  g-plan is executing (i.e., the main sequence is in execution, and
+  the sub-plan is applicable according to the context), then the body
+  of the sub-plan is stacked on top of the stack of the current
+  (g-plan related) intention.
 %
-The effect is like an asynchronous interruption of the main sequence, to execute the body of the sub-plan.
+  The effect is like an asynchronous interruption of the main
+  sequence, to execute the body of the sub-plan first.
 
-\item The execution of the extended plan is considered completed if/when the condition described by 
-the \texttt{goal\_cond} expression is met.
+\item The execution of the extended plan is considered completed
+  if/when the condition described by the \texttt{goal\_cond}
+  expression is met.
 %
 %GoalCondition is analogous to the context: however, if context can be considered to be as the pre-condition to execute the plan, the GoalCondition are like a post-condition, which corresponds to a declarative description of the goal to be achieved. 
 %
 %Alternatively, the execution of a plan can be forced to complete by using an internal action .done - this is useful everytime the goal condition cannot be effectively or naturally described as a boolean expression.
 %
-If \texttt{goal\_cond} is not specified, by default the condition is that all actions of the main sequence have been executed and completed, in continuity with the AS model, unless the case in which the main plan body is empty: in that case the condition is {\texttt{false}} by default.
+  If \texttt{goal\_cond} is not specified, by default the condition is
+  that all actions of the main sequence have been executed and
+  completed, in compatibility with the AS model, unless the case in
+  which the main plan body is empty: in that case the condition is
+  {\texttt{false}} by default.
 %
 %, i.e. the plan This condition is explicitly represented by the new predefined predicate \texttt{.is\_done}.
-\item The body of the plan provides a lexical and runtime scope of the sub-plans, that is: 
-variables used in the goal/context expressions are visible also to sub-plans
- the lifetime/availability of the sub-plans is limited to the time in which the g-plan is in execution
+\item The body of the plan provides a syntactical and runtime scope of
+  the sub-plans, that is: variables used in the goal/context
+  expressions are visible also to sub-plans; the lifetime/availability
+  of the sub-plans is limited to the time in which the g-plan is in
+  execution.
 %
-\item Failures generated by either the main sequence or by sub-plans generate a -!g that could handled.
+\item Failures generated by either the main sequence or by sub-plans
+  generate a \texttt{-!g} event.
 %
-\item a {\asl} plan \texttt{+!g : c <- b.} is an {\aser} g-plan with no g-plans.
+\item An {\asl} plan \texttt{+!g : c <- a.} is an {\aser} g-plan with
+  no sub-plans.
 \end{itemize}
 %
 %
@@ -429,15 +441,14 @@ agent programming based on the BDI model, namely:
 \begin{itemize}
 \item improving the overall readability of the agent source code,
   reducing fragmentation and increasing modularity;
-\item promoting a more goal-oriented programming style, enforcing yet
-  preserving the possibility to specify purely reactive behaviour,
-  properly encapsulated into plans for goals;
+\item promoting a cleaner goal-oriented programming style by enforcing
+  encapsulation of reative plans into plans for goals yet preserving
+  the possibility of specifying purely reactive behaviour;
 \item improving intention management, enforcing a one-to-one relation
   between intentions and goals --- so every intention is related to a
-  (top-level) goal;
-\item improving failure handling, in particular making it easier the
-  management of failures related to plans for reacting to environment
-  events;
+  single (top-level) goal;
+\item improving failure handling, in particular making it easier to
+  manage failures related to plans for reacting to environment events.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -446,21 +457,21 @@ agent programming based on the BDI model, namely:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %
-We formalised the main changes required in the existing formal semantics 
-of AgentSpeak(L) and experimentally evaluated on first prototype
-implementation of \aser, on top of the ASTRA and Jason platform
-(available here\footnote{\url{https://github.com/agentspeakers}}).
+We formalised the main changes required in the existing formal
+semantics of AgentSpeak(L) and experimentally evaluated on initial
+prototype implementations of {\aser}, on top of the ASTRA and Jason
+platforms\footnote{Available at \url{https://github.com/agentspeakers}.}.
 %
 Results will be described in a longer version of this paper.
 
 %
 As with any new programming language, there is much future work, 
-including improving the prototype implementations and. comparing performances
+including improving the prototype implementations and comparing performances.
 %
 More generally, full understanding and evaluation of a programming
 language takes many years. We expect in the long term to use \aser\ in
 the practical development of multi-agent systems, both for real-world
-systems and also academic ones (e.g., for the multi-agent programming
+as well as academic systems (e.g., for the multi-agent programming
 contest~\cite{Albrecht18}). However, besides the actual programming
 practice, we expect \aser\ to contribute to formal work as
 well. Assessing how formal verification of \aser\ systems compares to
