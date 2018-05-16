@@ -1,0 +1,1006 @@
+Return-Path: <01020161296f87d3-2f825c1e-d371-4d67-9796-5b95eb73d054-000000@bounce.confmaster.net>
+Delivered-To: jomi.hubner@ufsc.br
+Received: from mx.mail.ufsc.br ([150.162.2.70])
+	by imap.ufsc.br (Dovecot) with LMTP id wGk3K2fMaFoBbQAAHpcLRQ
+	for <jomi.hubner@ufsc.br>; Wed, 24 Jan 2018 16:31:05 -0200
+Received: from antispam.setic.ufsc.br (as83.setic.ufsc.br [150.162.2.83])
+	by mx.mail.ufsc.br (Postfix) with ESMTPS id 5711CC5EF
+	for <jomi.hubner@ufsc.br>; Wed, 24 Jan 2018 16:31:05 -0200 (-02)
+Received: from localhost (localhost [127.0.0.1])
+	by antispam.setic.ufsc.br (Vertip Secure Mail) with ESMTP id 0E21B1BB001F
+	for <jomi.hubner@ufsc.br>; Wed, 24 Jan 2018 16:31:02 -0200 (BRST)
+Authentication-Results: antispam.setic.ufsc.br; dkim=pass
+	reason="1024-bit key; unprotected key"
+	header.d=confmaster.net header.i=@confmaster.net header.b=SMlnMYbG;
+	dkim-adsp=pass; dkim-atps=neutral
+X-VERTICAL-IP-Quarantine-ID: <JDAPahTA39Ob>
+X-VERTICAL-IP-SCANNED: Vertical IP Secure Mail
+X-VERTICAL-IP-Spam-Score: 1.363
+Received-SPF: Pass (sender SPF authorized) identity=mailfrom; client-ip=54.240.7.20; helo=a7-20.smtp-out.eu-west-1.amazonses.com; envelope-from=01020161296f87d3-2f825c1e-d371-4d67-9796-5b95eb73d054-000000@bounce.confmaster.net; receiver=jomi.hubner@ufsc.br 
+Received: from a7-20.smtp-out.eu-west-1.amazonses.com (a7-20.smtp-out.eu-west-1.amazonses.com [54.240.7.20])
+	(using TLSv1 with cipher AES128-SHA (128/128 bits))
+	(No client certificate requested)
+	by as76.setic.ufsc.br (Vertip Secure Mail) with ESMTPS id B50911190141
+	for <jomi.hubner@ufsc.br>; Wed, 24 Jan 2018 16:30:36 -0200 (BRST)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=sq3smr26xjimzfguxtpjh3bz4seeoxxm; d=confmaster.net; t=1516818630;
+	h=Content-Type:MIME-Version:Subject:From:To:Cc:Date:Message-ID;
+	bh=qahA2929qjXsrHl902bX3CTrJIJSr7Ju4+nMn07go38=;
+	b=SMlnMYbGvh0yKSX245RvmIdqX3iOY3yQUZb5c1w6LAzxx78TU8SFDDI2Tf8ntMjd
+	jOSHb7jgbKb/4G4sjWp7ZMfkkQPCxVpDGGn+Jkm33IbQKdM7JBZfD2Hwidzx7d9zJYi
+	m3OMOUtkvN/1rSfo/OxV90B90KbrzPQM09ccYT3M=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=shh3fegwg5fppqsuzphvschd53n6ihuv; d=amazonses.com; t=1516818630;
+	h=Content-Type:MIME-Version:Subject:From:To:Cc:Date:Message-ID:Feedback-ID;
+	bh=qahA2929qjXsrHl902bX3CTrJIJSr7Ju4+nMn07go38=;
+	b=Gpv0syFxroqqY2M4zrNZqRQr63/xJFiwKVyEqqtQDN2lRMkFjhUCLl5Qx7X3hLKC
+	u+N6y/KhjZhvLJxOpTa+Oyo8bUJp72TT0/B5X/ZIfm0IfUR76ZiwqS/oOKsyra4ZZDE
+	SJHo78HhPOzuR5heSzbBnazANzQTKS8OZI1cUTmA=
+Content-Type: multipart/alternative;
+ boundary="===============8253600704456096958=="
+MIME-Version: 1.0
+Subject: AAMAS2018: Notification for paper # 329
+From: no-reply@confmaster.net
+To: no-reply@confmaster.net
+Cc: aamas@confmaster.net
+Date: Wed, 24 Jan 2018 18:30:30 +0000
+Message-ID: <01020161296f87d3-2f825c1e-d371-4d67-9796-5b95eb73d054-000000@eu-west-1.amazonses.com>
+X-SES-Outgoing: 2018.01.24-54.240.7.20
+Feedback-ID: 1.eu-west-1.xFZQkvuX/eXJzOdEfSY7ztBOoue0tSfQcdPdSb4UU0g=:AmazonSES
+
+--===============8253600704456096958==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+
+
+ =20
+
+
+Dear Authors,
+
+ =20
+
+
+We are pleased to inform you that your paper # 329 with the title: AgentSpe=
+ak(ER): An Extension of AgentSpeak(L) improving Encapsulation and Reasoning=
+ about Goals
+
+has been accepted as an EXTENDED ABSTRACT for publication in the proceeding=
+s of the 17th International Conference on Autonomous Agents and Multiagent =
+Systems (AAMAS 2018).
+
+ =20
+
+
+The review process was extremely selective. Out of the 597 submissions that=
+ were reviewed for the main track, the program committee selected 151 full =
+papers (8 pages plus references) for oral presentation and 132 extended abs=
+tracts (2 pages plus references) for poster presentation.
+
+ =20
+
+
+The reviews of your paper are included below.  In addition to the text of t=
+he (possibly revised) reviews that you have already seen, the reviews inclu=
+de some numerical scores (from 1 to 10), the review of the SPC member, and =
+any additional reviews that were solicited during the discussion phase. Ple=
+ase be aware that the numerical scores are not always indicative. As you kn=
+ow, each PC and SPC member only saw a small subset of the overall submissio=
+ns. In selecting the final program, the program chairs read through the det=
+ailed recommendations from the area chairs, SPC, and PC and made decisions =
+based on the overall set of papers.
+
+ =20
+
+
+Though there will be no further review of your paper, in some cases the acc=
+eptance decision was influenced by the assumption that you would improve yo=
+ur paper according to the reviewer comments, or your rebuttal.  As you prep=
+are the final version of your paper, please take these issues into account =
+in order to publish the best possible article.
+
+ =20
+
+
+Extended abstracts are allowed 2 pages in the proceedings plus an unlimited=
+ number of pages containing *bibliographic references only*.   In a later m=
+essage we will provide you with the copyright and formatting instructions s=
+o that you can prepare and submit the final camera-ready version. For your =
+paper to be published, at least one author must register for the conference=
+ and attend to present it.  All accepted papers (both full papers and exten=
+ded abstracts) will also be presented as posters.  As a result, the poster =
+sessions will be a very important part of the overall program and we look f=
+orward to having your poster there.
+
+ =20
+
+
+We are delighted to announce that we have funding for student travel suppor=
+t. The purpose is to enable full-time students at a higher education instit=
+ution to travel and participate in the conference. If one of the authors of=
+ your paper is a student, please see this page for more information:=20
+
+[http://celweb.vuse.vanderbilt.edu/aamas18/studentTravel/](http://celweb.vu=
+se.vanderbilt.edu/aamas18/studentTravel/)
+
+The deadline for applications is the 28th of February.
+
+ =20
+
+
+Note that the camera ready and early registration deadlines are over one mo=
+nth later than they are during a normal year when AAMAS occurs in May so yo=
+u will have ample time to revise your paper and make your travel arrangemen=
+ts.   We will be in touch with you again in a couple of weeks with informat=
+ion about the camera-ready submission and registration deadlines.
+
+ =20
+
+
+Congratulations again and we look forward to seeing you at AAMAS 2018 this =
+coming July in Stockholm!
+
+ =20
+
+
+Regards,
+
+Mehdi Dastani and Gita Sukthankar
+
+2018 AAMAS Program Chairs
+
+\-----------------------------
+
+Paper ID: 329
+
+Title:    AgentSpeak(ER): An Extension of AgentSpeak(L) improving Encapsula=
+tion and Reasoning about Goals
+
+ =20
+
+
+
+
+
+
+* Review *
+
+\- Full Paper Recommendation: 5 =20
+\- Relevance: 5
+
+\- Novelty: 5
+
+\- Significance: 5
+
+\- Readability: 3
+
+-Technical Quality:  5
+
+ =20
+
+
+\- Comments to Authors :
+
+Summary of the Paper<br />=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D<br /><br />This paper discusses an extension of AgentSpeak(L).=
+ The authors point out that the presented extensions improve the style of &=
+quot;BDI agent programming&quot; (these terms are used rather casual), with=
+ respect to program modularity, readability, failure handling, and reactive=
+ as well as goal-based reasoning.<br /><br />Justification for the Scores<b=
+r />=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D<br /><br />The paper has shortcomings in explanation and, i=
+n particular evaluation.<br /><br />Constructive Comments to Improve the Pa=
+per<br />=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D<br /><br />Section &quot;Motivation&qu=
+ot; points to a lack of plan failure handling (exception handling) for so-c=
+alled &quot;e-plans&quot;. This appears to be the main motivation for exten=
+ding AgentSpeak(L): &quot;Di cult failure handling: Failures/errors generat=
+ed in the body of e-plan cannot be directly captured.&quot;. The explanatio=
+ns for the other two problems, &quot;Lack of encapsulation&quot; and &quot;=
+Implicit vs. Explicit goals&quot; would need more work. For example, it is =
+stated: &quot;The problem here is that the e-plan +stop &lt;- ... is part o=
+f the strategy to achieve the goal !elab_nums, however it is encoded as a s=
+eparate unrelated plan.&quot; - can you elaborate better why this is a prob=
+lem?<br /><br /><br />I accept the paper as a contribution to the developme=
+nt of AgentSpeak. However, why is it important to demonstrate that the new =
+language allows better performance, when the paper actually puts forward a =
+different argument, namely improved, clearer programming of BDI agents? If =
+there is an analysis of results then how would you demonstrate to a reader =
+that the presented language approach is an improvement? Performance is not =
+mentioned as a motivator in previous sections of the paper.<br /><br /><br =
+/>Other statements<br />&quot;Suppose that, realistically, we cannot spread=
+/pollute plans about the goal !elab with a stop-dependent behaviour. &quot;=
+<br />- what does this mean ? Can you reformulate that?<br /><br />&quot;If=
+ for some reason during its execution an agent decides not to follow these =
+plans anymore (e.g. it chooses to become disobedient), it is di cult to =E2=
+=80=9Cdisable=E2=80=9D the behaviour of the above plans. Either these plans=
+ have to be changed to consider a particular state of the agent or the agen=
+t removes all these plans from its plan library.&quot;<br />- &quot;if the =
+agent decides...&quot;, then we may assume that there is some functionality=
+ implemented that reacts to this &quot;reason&quot; - a plan that may &#39;=
+disable&#39; this behaviour ? So, why is this a problem?<br /><br />&quot;T=
+he use of e-plans to achieve goals is actually an important conceptual bric=
+k of the AgentSpeak(L) model.&quot;<br />- what is a conceptual &#39;brick&=
+#39; ? Can you find another expression here?<br /><br /><br /><br />Questio=
+ns for Rebuttal <br />=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D
+
+ =20
+
+
+
+
+
+
+
+
+* Review *
+
+\- Full Paper Recommendation: 7 =20
+\- Relevance: 10
+
+\- Novelty: 8
+
+\- Significance: 7
+
+\- Readability: 7
+
+-Technical Quality:  6
+
+ =20
+
+
+\- Comments to Authors :
+
+The paper addresses an interesting and potentially important problem. It ad=
+dresses 2 deficiencies in AgentSpeak(L). First, AgentSpeak(L) often leads t=
+o situations where the overall plan to achieve a goal is spread across mult=
+iple disparate plans that do not explicitly point to the goals that they ar=
+e designed to help achieve. Second, failure handling is difficult in AgentS=
+peak(L).<br /><br />The paper is largely understandable (although the Engli=
+sh phrasing is awkward in a number of places).<br /><br />Overall, the prop=
+osals are novel and well-motivated. On the downside, there are problems tha=
+t accrue from changing AgentSpeak(L) in the manner suggested. These problem=
+s are not discussed at all, which is probably the biggest negative for this=
+ paper.<br /><br />Papers such as this are positioned in a difficult space,=
+ where the discourse often boils down to personal preference on a certain p=
+rogramming style guides the evaluation of the contribution (rather than som=
+e more compelling criterion). <br /><br />Some additional concerns:<br /><b=
+r />Where and how is plan failure detected? Some details would help here. T=
+he current proposal assumes that an appropriate =E2=80=9Cremove goal=E2=80=
+=9D event is somehow generated, but these critical details are missing.<br =
+/><br />Should there be any constraints governing the relationship between =
+the goal conditions of a plan and the goal conditions of plans that might b=
+e invoked in the plan body of the parent plan? At first blush, it would app=
+ear that these should be mutually constrained, but the paper seems to avoid=
+ the question.<br /><br />A downside to explicitly encoding reactive behavi=
+our is precisely that reactive behaviour will need to be explicitly encoded=
+. In AgentSpeak(L), the mechanism of subgoals and sub-plans indirectly and =
+implicitly achieves the ability to react.<br /><br />The suggestion that Ag=
+entSpeak(L) is unable to handle g-plans and e-plans is made at various poin=
+ts in the paper. This is contentious. Belief addition and removal events ca=
+n also be viewed as the goal addition/removal events =E2=80=93 where the go=
+al is to handle the belief added or removed.<br /><br />The first paragraph=
+ of Section 4 is confusing. It isn=E2=80=99t clear why the handling of exte=
+rnal events requires the invoking of an applicable plan from each intention=
+ stack, when normally (in AgentSpeak(L)) one would create a new intention s=
+tack for each external event. This is a significant departure, and as point=
+ed out earlier, a discussion of the downside to modifying AgentSpeak(L) in =
+this fashion should be included.
+
+ =20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* Review *
+
+\- Full Paper Recommendation: 4 =20
+\- Relevance: 8
+
+\- Novelty: 4
+
+\- Significance: 4
+
+\- Readability: 7
+
+-Technical Quality:  4
+
+ =20
+
+
+\- Comments to Authors :
+
+The authors have proposed an extension to AgentSpeak(L) to enable grouping =
+of related strategies and failure handling, though the latter comes &#39;fo=
+r free&#39; by enforcing all e-plans to be linked to g-plans. In particular=
+, the authors propose a one-to-one correspondence between e-plans and g-pla=
+ns, and provide an extension to AgentSpeak to this end, as well as some pre=
+liminary experimental results to show that the added overhead is feasible. =
+The paper is generally well written and easy to follow.<br /><br />My main =
+concern, as discussed below, is that one of the main benefits claimed by th=
+e authors, that their proposal improves the overall readability of the agen=
+t source code, is not convincing. Moreover, they do not (even analytically)=
+ compare the advantages of their syntax/semantics with existing approaches =
+such as [25,29], which also seem to offer similar advantages (e.g. declarat=
+ive goals), but without the need for explicit programming. <br /><br />Spec=
+ific comments follow.<br /><br />The definition of a &#39;goal condition&#3=
+9; as a postcondition doesn&#39;t seem quite right, as postconditions are t=
+ypically effects brought about by operations/goals (e.g. the add/delete lis=
+ts of STRIPS operators). Also the description of the semantics of goal cond=
+itions (page 3, second column, first para) is not clear, in particular the =
+sentence &#39;However, if a goal condition is defined, having finished the =
+body execution is not sufficient to deactivate the goal&#39;. What does &#3=
+9;deactivate&#39; mean here, and what happens when a body finishes executio=
+n but the goal condition is not met? Is the body immediately restarted? Thi=
+s seems to be hinted in the Examples section (&#39;plan execution is going =
+to last forever&#39;) but it is not clearly stated anywhere. This semantics=
+ seems to be related to declarative goals, e.g. in [29], where a plan/goal =
+is retried until its success condition is met. <br /><br />On page 2, left =
+column, the +!elab_nums(N) goal has !print_nums(N-1) in its body (in the th=
+ird set of plan-rules), which is probably a mistake.<br /><br />The authors=
+ seem to say that if elab(N) were an action that takes a long time to compl=
+ete, that it could be terminated before it finishes. It is not clear how th=
+is can actually happen with actions that represent while loops, for example=
+, which must loop many thousands of times before the action (function) can =
+complete (return). It is also not clear whether the authors have extended A=
+gentSpeak to take into account such &#39;durative&#39; actions, which the a=
+uthors also somehow allow to be terminated mid-way through execution. In so=
+me other BDI languages such as [29], actions are atomic and cannot be termi=
+nated mid-way.<br /><br />In the Example section it is not clear what the v=
+ertical bar `|&#39; is meant to be. Is it a logical OR? But since &#39;stop=
+&#39; is a proposition, and &#39;.body_done&#39; is an action, this vertica=
+l bar syntax is non-intuitive. Having an action to represent the fact that =
+a plan-body has completed execution also seems rather &#39;hacky&#39;, comp=
+ared to the plan-rules shown on page 2, left column (from standard AgentSpe=
+ak). Similarly, the &#39;Single Minded Commitment&#39; for a goal requires =
+explicit programming (e.g. the use of &#39;.drop_intention (...)&#39;), whe=
+reas it seems to be handled more elegantly in the formalisms of [25,29], vi=
+a the declarative goal construct Goal(s,P,f). While the authors do cite the=
+se papers there is no comparison w.r.t. what the differences are between th=
+e &#39;Single Minded Commitment&#39; approach presented by the authors and =
+the approach in [25,29]. For example, Goal(s,P,f) can also drop an intentio=
+n P being pursued if &#39;s&#39; or &#39;f&#39; become true. In addition, [=
+25] seems to also allow failure handling for e-plans (see rules A^2_goal an=
+d A^3_goal).<br /><br />When an e-plan needs to be defined inside multiple =
+g-plans, it seems the e-plan needs to be repeated inside all of the g-plans=
+, whereas in AgentSpeak(L) the e-plan will only need to be specified once. =
+Moreover, it looks like the e-plans that are &#39;related to&#39; g-plans c=
+ould be automatically computed based on the effects brought about by standa=
+rd AgentSpeak(L) e-plans and the preconditions of g-plans (e.g. &#39;stop&#=
+39; affects &#39;not stop&#39; in the left column of page 2), rather than a=
+sking the programmer to directly/manually specify (and sometimes repeat) e-=
+plans and g-plans in the structure/syntax proposed by the authors. <br /><b=
+r />In Section 3.3 the authors have specified a failure goal &#39;-g&#39; *=
+inside* the specification of the body of the corresponding g-plan, which is=
+ contrary to how it is done in Jason (as mentioned by the authors) and also=
+ counter-intuitive. It makes sense to specify, for example, goal +!g1 insid=
+e the body of +!g because !g1 actually occurs inside the plan for !g. The f=
+ailure handling example on page 2, second column, is also not convincing. F=
+irst of all, why would a &#39;println&#39; action ever fail? If it does fai=
+l, why would the println(&quot;failure&quot;) action in &#39;-!manage_stop&=
+#39; succeed? Also it is not clear how/whether the AgentSpeak semantics can=
+ handle such action failure. For example, some other agent programming lang=
+uages represent the &#39;failure&#39; of an action as the non-applicability=
+ of its precondition, or the failure of a test goal that occurs after the a=
+ction (both of which occur within some plan-body).<br /><br />While the eva=
+luation seems to suggest that AgentSpeak(ER) is not significantly worse tha=
+n ASTRA, a more suitable evaluation would have been to see whether (manual)=
+ agent-programming efficiency can actually be improved by the new syntax an=
+d grouping of plans proposed by the authors. This would require some sort o=
+f carefully designed user study to see whether writing agents in AgentSpeak=
+(ER) is faster than writing then in AgentSpeak(L).
+
+ =20
+
+
+
+
+
+
+\---------
+
+ =20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\- Metareview:=20
+
+Summary of reviews<br />=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D<br=
+ /><br />Thank you for your work on extending AgentSpeak (L) to better mana=
+ge goal reasoning. The reviewers agree that the work is interesting. Howeve=
+r, as can be seen from their reviews, they all have concerns with the work =
+presented. The main criticism is around the evaluation. Although the paper =
+claims this extension improves four aspects as mentioned in the introductio=
+n, there is no empirical evidence that it does. This is something the autho=
+rs should address to improve upon this work. The reviewers have also made o=
+ther useful suggestions which I hope the authors will take onboard.
+
+
+
+
+
+
+
+
+
+--===============8253600704456096958==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+<div style=3D"line-height: 16px;"><span id=3D"docs-internal-guid-8b9f3246-2=
+968-8d04-be24-2614b65359bc"><span id=3D"docs-internal-guid-8b9f3246-296a-62=
+aa-2f83-88394539c4cb"><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0=
+pt;margin-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; =
+background-color: transparent; font-variant-ligatures: normal; font-variant=
+-east-asian: normal; font-variant-position: normal; vertical-align: baselin=
+e; white-space: pre-wrap;"></span></p></span><p dir=3D"ltr" style=3D"line-h=
+eight:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font-size: 11p=
+t; font-family: Arial; background-color: transparent; font-variant-ligature=
+s: normal; font-variant-east-asian: normal; font-variant-position: normal; =
+vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir=3D"=
+ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span sty=
+le=3D"font-size: 11pt; font-family: Arial; background-color: transparent; f=
+ont-variant-ligatures: normal; font-variant-east-asian: normal; font-varian=
+t-position: normal; vertical-align: baseline; white-space: pre-wrap;">Dear =
+Authors,</span></p><br><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:=
+0pt;margin-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial;=
+ background-color: transparent; font-variant-ligatures: normal; font-varian=
+t-east-asian: normal; font-variant-position: normal; vertical-align: baseli=
+ne; white-space: pre-wrap;">We are pleased to inform you that your paper # =
+329 with the title: AgentSpeak(ER): An Extension of AgentSpeak(L) improving=
+ Encapsulation and Reasoning about Goals</span></p><p dir=3D"ltr" style=3D"=
+line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font-siz=
+e: 11pt; font-family: Arial; background-color: transparent; font-variant-li=
+gatures: normal; font-variant-east-asian: normal; font-variant-position: no=
+rmal; vertical-align: baseline; white-space: pre-wrap;">has been accepted a=
+s an EXTENDED ABSTRACT for publication in the proceedings of the 17th Inter=
+national Conference on Autonomous Agents and Multiagent Systems (AAMAS 2018=
+).</span></p><br><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;ma=
+rgin-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; backg=
+round-color: transparent; font-variant-ligatures: normal; font-variant-east=
+-asian: normal; font-variant-position: normal; vertical-align: baseline; wh=
+ite-space: pre-wrap;">The review process was extremely selective. Out of th=
+e 597 submissions that were reviewed for the main track, the program commit=
+tee selected 151 full papers (8 pages plus references) for oral presentatio=
+n and 132 extended abstracts (2 pages plus references) for poster presentat=
+ion.</span></p><br><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;=
+margin-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; bac=
+kground-color: transparent; font-variant-ligatures: normal; font-variant-ea=
+st-asian: normal; font-variant-position: normal; vertical-align: baseline; =
+white-space: pre-wrap;">The reviews of your paper are included below. &nbsp=
+;In addition to the text of the (possibly revised) reviews that you have al=
+ready seen, the reviews include some numerical scores (from 1 to 10), the r=
+eview of the SPC member, and any additional reviews that were solicited dur=
+ing the discussion phase. Please be aware that the numerical scores are not=
+ always indicative. As you know, each PC and SPC member only saw a small su=
+bset of the overall submissions. In selecting the final program, the progra=
+m chairs read through the detailed recommendations from the area chairs, SP=
+C, and PC and made decisions based on the overall set of papers.</span></p>=
+<br><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0=
+pt;"><span style=3D"font-size: 11pt; font-family: Arial; background-color: =
+transparent; font-variant-ligatures: normal; font-variant-east-asian: norma=
+l; font-variant-position: normal; vertical-align: baseline; white-space: pr=
+e-wrap;">Though there will be no further review of your paper, in some case=
+s the acceptance decision was influenced by the assumption that you would i=
+mprove your paper according to the reviewer comments, or your rebuttal. &nb=
+sp;As you prepare the final version of your paper, please take these issues=
+ into account in order to publish the best possible article.</span></p><br>=
+<p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"=
+><span style=3D"font-size: 11pt; font-family: Arial; background-color: tran=
+sparent; font-variant-ligatures: normal; font-variant-east-asian: normal; f=
+ont-variant-position: normal; vertical-align: baseline; white-space: pre-wr=
+ap;">Extended abstracts are allowed 2 pages in the proceedings plus an unli=
+mited number of pages containing *bibliographic references only*. &nbsp;&nb=
+sp;In a later message we will provide you with the copyright and formatting=
+ instructions so that you can prepare and submit the final camera-ready ver=
+sion. For your paper to be published, at least one author must register for=
+ the conference and attend to present it. &nbsp;All accepted papers (both f=
+ull papers and extended abstracts) will also be presented as posters. &nbsp=
+;As a result, the poster sessions will be a very important part of the over=
+all program and we look forward to having your poster there.</span></p><br>=
+<p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"=
+><span style=3D"font-size: 11pt; font-family: Arial; background-color: tran=
+sparent; font-variant-ligatures: normal; font-variant-east-asian: normal; f=
+ont-variant-position: normal; vertical-align: baseline; white-space: pre-wr=
+ap;">We are delighted to announce that we have funding for student travel s=
+upport. The purpose is to enable full-time students at a higher education i=
+nstitution to travel and participate in the conference. If one of the autho=
+rs of your paper is a student, please see this page for more information: <=
+/span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bo=
+ttom:0pt;"><a href=3D"http://celweb.vuse.vanderbilt.edu/aamas18/studentTrav=
+el/"><span style=3D"font-size: 11pt; font-family: Arial; color: rgb(17, 85,=
+ 204); background-color: transparent; font-variant-ligatures: normal; font-=
+variant-east-asian: normal; font-variant-position: normal; text-decoration:=
+ underline; -webkit-text-decoration-skip: none; vertical-align: baseline; w=
+hite-space: pre-wrap;">http://celweb.vuse.vanderbilt.edu/aamas18/studentTra=
+vel/</span></a></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;=
+margin-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; bac=
+kground-color: transparent; font-variant-ligatures: normal; font-variant-ea=
+st-asian: normal; font-variant-position: normal; vertical-align: baseline; =
+white-space: pre-wrap;">The deadline for applications is the 28th of Februa=
+ry.</span></p><br><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;m=
+argin-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; back=
+ground-color: transparent; font-variant-ligatures: normal; font-variant-eas=
+t-asian: normal; font-variant-position: normal; vertical-align: baseline; w=
+hite-space: pre-wrap;">Note that the camera ready and early registration de=
+adlines are over one month later than they are during a normal year when AA=
+MAS occurs in May so you will have ample time to revise your paper and make=
+ your travel arrangements. &nbsp;&nbsp;We will be in touch with you again i=
+n a couple of weeks with information about the camera-ready submission and =
+registration deadlines.</span></p><br><p dir=3D"ltr" style=3D"line-height:1=
+.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font-size: 11pt; font=
+-family: Arial; background-color: transparent; font-variant-ligatures: norm=
+al; font-variant-east-asian: normal; font-variant-position: normal; vertica=
+l-align: baseline; white-space: pre-wrap;">Congratulations again and we loo=
+k forward to seeing you at AAMAS 2018 this coming July in Stockholm!</span>=
+</p><br><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bott=
+om:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; background-col=
+or: transparent; font-variant-ligatures: normal; font-variant-east-asian: n=
+ormal; font-variant-position: normal; vertical-align: baseline; white-space=
+: pre-wrap;">Regards,</span></p><p dir=3D"ltr" style=3D"line-height:1.38;ma=
+rgin-top:0pt;margin-bottom:0pt;"><span style=3D"font-size: 11pt; font-famil=
+y: Arial; background-color: transparent; font-variant-ligatures: normal; fo=
+nt-variant-east-asian: normal; font-variant-position: normal; vertical-alig=
+n: baseline; white-space: pre-wrap;">Mehdi Dastani and Gita Sukthankar</spa=
+n></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom=
+:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; background-color=
+: transparent; font-variant-ligatures: normal; font-variant-east-asian: nor=
+mal; font-variant-position: normal; vertical-align: baseline; white-space: =
+pre-wrap;">2018 AAMAS Program Chairs</span></p><p dir=3D"ltr" style=3D"line=
+-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font-size: 1=
+1pt; font-family: Arial; background-color: transparent; font-variant-ligatu=
+res: normal; font-variant-east-asian: normal; font-variant-position: normal=
+; vertical-align: baseline; white-space: pre-wrap;">-----------------------=
+------</span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;ma=
+rgin-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; backg=
+round-color: transparent; font-variant-ligatures: normal; font-variant-east=
+-asian: normal; font-variant-position: normal; vertical-align: baseline; wh=
+ite-space: pre-wrap;">Paper ID: 329</span></p><p dir=3D"ltr" style=3D"line-=
+height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font-size: 11=
+pt; font-family: Arial; background-color: transparent; font-variant-ligatur=
+es: normal; font-variant-east-asian: normal; font-variant-position: normal;=
+ vertical-align: baseline; white-space: pre-wrap;">Title: &nbsp;&nbsp;&nbsp=
+;AgentSpeak(ER): An Extension of AgentSpeak(L) improving Encapsulation and =
+Reasoning about Goals</span></p><br><p dir=3D"ltr" style=3D"line-height:1.3=
+8;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font-size: 11pt; font-f=
+amily: Arial; background-color: transparent; font-variant-ligatures: normal=
+; font-variant-east-asian: normal; font-variant-position: normal; vertical-=
+align: baseline; white-space: pre-wrap;"></span></p><p dir=3D"ltr" style=3D=
+"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font-si=
+ze: 11pt; font-family: Arial; font-variant-ligatures: normal; font-variant-=
+east-asian: normal; font-variant-position: normal; vertical-align: baseline=
+; white-space: pre-wrap;"></span></p><p dir=3D"ltr" style=3D"line-height:1.=
+38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font-size: 11pt; font-=
+family: Arial; background-color: transparent; font-variant-ligatures: norma=
+l; font-variant-east-asian: normal; font-variant-position: normal; vertical=
+-align: baseline; white-space: pre-wrap;">* Review *</span></p><p dir=3D"lt=
+r" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=
+=3D"font-size: 11pt; font-family: Arial; background-color: transparent; fon=
+t-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-=
+position: normal; vertical-align: baseline; white-space: pre-wrap;">- Full =
+Paper Recommendation: 5</span><span style=3D"font-size: 11pt; font-family: =
+Arial; background-color: transparent; font-variant-ligatures: normal; font-=
+variant-east-asian: normal; font-variant-position: normal; vertical-align: =
+baseline; white-space: pre-wrap;"><br class=3D"kix-line-break"></span><span=
+ style=3D"font-size: 11pt; font-family: Arial; background-color: transparen=
+t; font-variant-ligatures: normal; font-variant-east-asian: normal; font-va=
+riant-position: normal; vertical-align: baseline; white-space: pre-wrap;">-=
+ Relevance: 5</span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top=
+:0pt;margin-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial=
+; background-color: transparent; font-variant-ligatures: normal; font-varia=
+nt-east-asian: normal; font-variant-position: normal; vertical-align: basel=
+ine; white-space: pre-wrap;">- Novelty: 5</span></p><p dir=3D"ltr" style=3D=
+"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font-si=
+ze: 11pt; font-family: Arial; background-color: transparent; font-variant-l=
+igatures: normal; font-variant-east-asian: normal; font-variant-position: n=
+ormal; vertical-align: baseline; white-space: pre-wrap;">- Significance: 5<=
+/span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bo=
+ttom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; background-c=
+olor: transparent; font-variant-ligatures: normal; font-variant-east-asian:=
+ normal; font-variant-position: normal; vertical-align: baseline; white-spa=
+ce: pre-wrap;">- Readability: 3</span></p><p dir=3D"ltr" style=3D"line-heig=
+ht:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font-size: 11pt; =
+font-family: Arial; background-color: transparent; font-variant-ligatures: =
+normal; font-variant-east-asian: normal; font-variant-position: normal; ver=
+tical-align: baseline; white-space: pre-wrap;">-Technical Quality: &nbsp;5<=
+/span></p><br><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margi=
+n-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; backgrou=
+nd-color: transparent; font-variant-ligatures: normal; font-variant-east-as=
+ian: normal; font-variant-position: normal; vertical-align: baseline; white=
+-space: pre-wrap;">- Comments to Authors :</span></p><p dir=3D"ltr" style=
+=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font=
+-size: 11pt; font-family: Arial; background-color: transparent; font-varian=
+t-ligatures: normal; font-variant-east-asian: normal; font-variant-position=
+: normal; vertical-align: baseline; white-space: pre-wrap;">Summary of the =
+Paper<br />=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D<br =
+/><br />This paper discusses an extension of AgentSpeak(L). The authors poi=
+nt out that the presented extensions improve the style of &quot;BDI agent p=
+rogramming&quot; (these terms are used rather casual), with respect to prog=
+ram modularity, readability, failure handling, and reactive as well as goal=
+-based reasoning.<br /><br />Justification for the Scores<br />=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D<br=
+ /><br />The paper has shortcomings in explanation and, in particular evalu=
+ation.<br /><br />Constructive Comments to Improve the Paper<br />=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D<br /><br />Section &quot;Motivation&quot; points to a la=
+ck of plan failure handling (exception handling) for so-called &quot;e-plan=
+s&quot;. This appears to be the main motivation for extending AgentSpeak(L)=
+: &quot;Di cult failure handling: Failures/errors generated in the body of =
+e-plan cannot be directly captured.&quot;. The explanations for the other t=
+wo problems, &quot;Lack of encapsulation&quot; and &quot;Implicit vs. Expli=
+cit goals&quot; would need more work. For example, it is stated: &quot;The =
+problem here is that the e-plan +stop &lt;- ... is part of the strategy to =
+achieve the goal !elab_nums, however it is encoded as a separate unrelated =
+plan.&quot; - can you elaborate better why this is a problem?<br /><br /><b=
+r />I accept the paper as a contribution to the development of AgentSpeak. =
+However, why is it important to demonstrate that the new language allows be=
+tter performance, when the paper actually puts forward a different argument=
+, namely improved, clearer programming of BDI agents? If there is an analys=
+is of results then how would you demonstrate to a reader that the presented=
+ language approach is an improvement? Performance is not mentioned as a mot=
+ivator in previous sections of the paper.<br /><br /><br />Other statements=
+<br />&quot;Suppose that, realistically, we cannot spread/pollute plans abo=
+ut the goal !elab with a stop-dependent behaviour. &quot;<br />- what does =
+this mean ? Can you reformulate that?<br /><br />&quot;If for some reason d=
+uring its execution an agent decides not to follow these plans anymore (e.g=
+. it chooses to become disobedient), it is di cult to =E2=80=9Cdisable=E2=
+=80=9D the behaviour of the above plans. Either these plans have to be chan=
+ged to consider a particular state of the agent or the agent removes all th=
+ese plans from its plan library.&quot;<br />- &quot;if the agent decides...=
+&quot;, then we may assume that there is some functionality implemented tha=
+t reacts to this &quot;reason&quot; - a plan that may &#39;disable&#39; thi=
+s behaviour ? So, why is this a problem?<br /><br />&quot;The use of e-plan=
+s to achieve goals is actually an important conceptual brick of the AgentSp=
+eak(L) model.&quot;<br />- what is a conceptual &#39;brick&#39; ? Can you f=
+ind another expression here?<br /><br /><br /><br />Questions for Rebuttal =
+<br />=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D</s=
+pan></p><br><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-=
+bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; background=
+-color: transparent; font-variant-ligatures: normal; font-variant-east-asia=
+n: normal; font-variant-position: normal; vertical-align: baseline; white-s=
+pace: pre-wrap;"></span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin=
+-top:0pt;margin-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: A=
+rial; font-variant-ligatures: normal; font-variant-east-asian: normal; font=
+-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;=
+"></span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin=
+-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; font-vari=
+ant-ligatures: normal; font-variant-east-asian: normal; font-variant-positi=
+on: normal; vertical-align: baseline; white-space: pre-wrap;"></span></p><p=
+ dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><=
+span style=3D"font-size: 11pt; font-family: Arial; background-color: transp=
+arent; font-variant-ligatures: normal; font-variant-east-asian: normal; fon=
+t-variant-position: normal; vertical-align: baseline; white-space: pre-wrap=
+;">* Review *</span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top=
+:0pt;margin-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial=
+; background-color: transparent; font-variant-ligatures: normal; font-varia=
+nt-east-asian: normal; font-variant-position: normal; vertical-align: basel=
+ine; white-space: pre-wrap;">- Full Paper Recommendation: 7</span><span sty=
+le=3D"font-size: 11pt; font-family: Arial; background-color: transparent; f=
+ont-variant-ligatures: normal; font-variant-east-asian: normal; font-varian=
+t-position: normal; vertical-align: baseline; white-space: pre-wrap;"><br c=
+lass=3D"kix-line-break"></span><span style=3D"font-size: 11pt; font-family:=
+ Arial; background-color: transparent; font-variant-ligatures: normal; font=
+-variant-east-asian: normal; font-variant-position: normal; vertical-align:=
+ baseline; white-space: pre-wrap;">- Relevance: 10</span></p><p dir=3D"ltr"=
+ style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=
+=3D"font-size: 11pt; font-family: Arial; background-color: transparent; fon=
+t-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-=
+position: normal; vertical-align: baseline; white-space: pre-wrap;">- Novel=
+ty: 8</span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;mar=
+gin-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; backgr=
+ound-color: transparent; font-variant-ligatures: normal; font-variant-east-=
+asian: normal; font-variant-position: normal; vertical-align: baseline; whi=
+te-space: pre-wrap;">- Significance: 7</span></p><p dir=3D"ltr" style=3D"li=
+ne-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font-size:=
+ 11pt; font-family: Arial; background-color: transparent; font-variant-liga=
+tures: normal; font-variant-east-asian: normal; font-variant-position: norm=
+al; vertical-align: baseline; white-space: pre-wrap;">- Readability: 7</spa=
+n></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom=
+:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; background-color=
+: transparent; font-variant-ligatures: normal; font-variant-east-asian: nor=
+mal; font-variant-position: normal; vertical-align: baseline; white-space: =
+pre-wrap;">-Technical Quality: &nbsp;6</span></p><br><p dir=3D"ltr" style=
+=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font=
+-size: 11pt; font-family: Arial; background-color: transparent; font-varian=
+t-ligatures: normal; font-variant-east-asian: normal; font-variant-position=
+: normal; vertical-align: baseline; white-space: pre-wrap;">- Comments to A=
+uthors :</span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;=
+margin-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; bac=
+kground-color: transparent; font-variant-ligatures: normal; font-variant-ea=
+st-asian: normal; font-variant-position: normal; vertical-align: baseline; =
+white-space: pre-wrap;">The paper addresses an interesting and potentially =
+important problem. It addresses 2 deficiencies in AgentSpeak(L). First, Age=
+ntSpeak(L) often leads to situations where the overall plan to achieve a go=
+al is spread across multiple disparate plans that do not explicitly point t=
+o the goals that they are designed to help achieve. Second, failure handlin=
+g is difficult in AgentSpeak(L).<br /><br />The paper is largely understand=
+able (although the English phrasing is awkward in a number of places).<br /=
+><br />Overall, the proposals are novel and well-motivated. On the downside=
+, there are problems that accrue from changing AgentSpeak(L) in the manner =
+suggested. These problems are not discussed at all, which is probably the b=
+iggest negative for this paper.<br /><br />Papers such as this are position=
+ed in a difficult space, where the discourse often boils down to personal p=
+reference on a certain programming style guides the evaluation of the contr=
+ibution (rather than some more compelling criterion). <br /><br />Some addi=
+tional concerns:<br /><br />Where and how is plan failure detected? Some de=
+tails would help here. The current proposal assumes that an appropriate =E2=
+=80=9Cremove goal=E2=80=9D event is somehow generated, but these critical d=
+etails are missing.<br /><br />Should there be any constraints governing th=
+e relationship between the goal conditions of a plan and the goal condition=
+s of plans that might be invoked in the plan body of the parent plan? At fi=
+rst blush, it would appear that these should be mutually constrained, but t=
+he paper seems to avoid the question.<br /><br />A downside to explicitly e=
+ncoding reactive behaviour is precisely that reactive behaviour will need t=
+o be explicitly encoded. In AgentSpeak(L), the mechanism of subgoals and su=
+b-plans indirectly and implicitly achieves the ability to react.<br /><br /=
+>The suggestion that AgentSpeak(L) is unable to handle g-plans and e-plans =
+is made at various points in the paper. This is contentious. Belief additio=
+n and removal events can also be viewed as the goal addition/removal events=
+ =E2=80=93 where the goal is to handle the belief added or removed.<br /><b=
+r />The first paragraph of Section 4 is confusing. It isn=E2=80=99t clear w=
+hy the handling of external events requires the invoking of an applicable p=
+lan from each intention stack, when normally (in AgentSpeak(L)) one would c=
+reate a new intention stack for each external event. This is a significant =
+departure, and as pointed out earlier, a discussion of the downside to modi=
+fying AgentSpeak(L) in this fashion should be included.</span></p><br><p di=
+r=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><spa=
+n style=3D"font-size: 11pt; font-family: Arial; background-color: transpare=
+nt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-v=
+ariant-position: normal; vertical-align: baseline; white-space: pre-wrap;">=
+</span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-b=
+ottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; font-varian=
+t-ligatures: normal; font-variant-east-asian: normal; font-variant-position=
+: normal; vertical-align: baseline; white-space: pre-wrap;"></span></p><p d=
+ir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; font-variant-ligatures: no=
+rmal; font-variant-east-asian: normal; font-variant-position: normal; verti=
+cal-align: baseline; white-space: pre-wrap;"></span></p><p dir=3D"ltr" styl=
+e=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"fon=
+t-size: 11pt; font-family: Arial; font-variant-ligatures: normal; font-vari=
+ant-east-asian: normal; font-variant-position: normal; vertical-align: base=
+line; white-space: pre-wrap;"></span></p><p dir=3D"ltr" style=3D"line-heigh=
+t:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font-size: 11pt; f=
+ont-family: Arial; font-variant-ligatures: normal; font-variant-east-asian:=
+ normal; font-variant-position: normal; vertical-align: baseline; white-spa=
+ce: pre-wrap;"></span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-t=
+op:0pt;margin-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Ari=
+al; font-variant-ligatures: normal; font-variant-east-asian: normal; font-v=
+ariant-position: normal; vertical-align: baseline; white-space: pre-wrap;">=
+</span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-b=
+ottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; font-varian=
+t-ligatures: normal; font-variant-east-asian: normal; font-variant-position=
+: normal; vertical-align: baseline; white-space: pre-wrap;"></span></p><p d=
+ir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; background-color: transpar=
+ent; font-variant-ligatures: normal; font-variant-east-asian: normal; font-=
+variant-position: normal; vertical-align: baseline; white-space: pre-wrap;"=
+>* Review *</span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0=
+pt;margin-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; =
+background-color: transparent; font-variant-ligatures: normal; font-variant=
+-east-asian: normal; font-variant-position: normal; vertical-align: baselin=
+e; white-space: pre-wrap;">- Full Paper Recommendation: 4</span><span style=
+=3D"font-size: 11pt; font-family: Arial; background-color: transparent; fon=
+t-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-=
+position: normal; vertical-align: baseline; white-space: pre-wrap;"><br cla=
+ss=3D"kix-line-break"></span><span style=3D"font-size: 11pt; font-family: A=
+rial; background-color: transparent; font-variant-ligatures: normal; font-v=
+ariant-east-asian: normal; font-variant-position: normal; vertical-align: b=
+aseline; white-space: pre-wrap;">- Relevance: 8</span></p><p dir=3D"ltr" st=
+yle=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"f=
+ont-size: 11pt; font-family: Arial; background-color: transparent; font-var=
+iant-ligatures: normal; font-variant-east-asian: normal; font-variant-posit=
+ion: normal; vertical-align: baseline; white-space: pre-wrap;">- Novelty: 4=
+</span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-b=
+ottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; background-=
+color: transparent; font-variant-ligatures: normal; font-variant-east-asian=
+: normal; font-variant-position: normal; vertical-align: baseline; white-sp=
+ace: pre-wrap;">- Significance: 4</span></p><p dir=3D"ltr" style=3D"line-he=
+ight:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font-size: 11pt=
+; font-family: Arial; background-color: transparent; font-variant-ligatures=
+: normal; font-variant-east-asian: normal; font-variant-position: normal; v=
+ertical-align: baseline; white-space: pre-wrap;">- Readability: 7</span></p=
+><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;=
+"><span style=3D"font-size: 11pt; font-family: Arial; background-color: tra=
+nsparent; font-variant-ligatures: normal; font-variant-east-asian: normal; =
+font-variant-position: normal; vertical-align: baseline; white-space: pre-w=
+rap;">-Technical Quality: &nbsp;4</span></p><br><p dir=3D"ltr" style=3D"lin=
+e-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font-size: =
+11pt; font-family: Arial; background-color: transparent; font-variant-ligat=
+ures: normal; font-variant-east-asian: normal; font-variant-position: norma=
+l; vertical-align: baseline; white-space: pre-wrap;">- Comments to Authors =
+:</span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-=
+bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; background=
+-color: transparent; font-variant-ligatures: normal; font-variant-east-asia=
+n: normal; font-variant-position: normal; vertical-align: baseline; white-s=
+pace: pre-wrap;">The authors have proposed an extension to AgentSpeak(L) to=
+ enable grouping of related strategies and failure handling, though the lat=
+ter comes &#39;for free&#39; by enforcing all e-plans to be linked to g-pla=
+ns. In particular, the authors propose a one-to-one correspondence between =
+e-plans and g-plans, and provide an extension to AgentSpeak to this end, as=
+ well as some preliminary experimental results to show that the added overh=
+ead is feasible. The paper is generally well written and easy to follow.<br=
+ /><br />My main concern, as discussed below, is that one of the main benef=
+its claimed by the authors, that their proposal improves the overall readab=
+ility of the agent source code, is not convincing. Moreover, they do not (e=
+ven analytically) compare the advantages of their syntax/semantics with exi=
+sting approaches such as [25,29], which also seem to offer similar advantag=
+es (e.g. declarative goals), but without the need for explicit programming.=
+ <br /><br />Specific comments follow.<br /><br />The definition of a &#39;=
+goal condition&#39; as a postcondition doesn&#39;t seem quite right, as pos=
+tconditions are typically effects brought about by operations/goals (e.g. t=
+he add/delete lists of STRIPS operators). Also the description of the seman=
+tics of goal conditions (page 3, second column, first para) is not clear, i=
+n particular the sentence &#39;However, if a goal condition is defined, hav=
+ing finished the body execution is not sufficient to deactivate the goal&#3=
+9;. What does &#39;deactivate&#39; mean here, and what happens when a body =
+finishes execution but the goal condition is not met? Is the body immediate=
+ly restarted? This seems to be hinted in the Examples section (&#39;plan ex=
+ecution is going to last forever&#39;) but it is not clearly stated anywher=
+e. This semantics seems to be related to declarative goals, e.g. in [29], w=
+here a plan/goal is retried until its success condition is met. <br /><br /=
+>On page 2, left column, the +!elab_nums(N) goal has !print_nums(N-1) in it=
+s body (in the third set of plan-rules), which is probably a mistake.<br />=
+<br />The authors seem to say that if elab(N) were an action that takes a l=
+ong time to complete, that it could be terminated before it finishes. It is=
+ not clear how this can actually happen with actions that represent while l=
+oops, for example, which must loop many thousands of times before the actio=
+n (function) can complete (return). It is also not clear whether the author=
+s have extended AgentSpeak to take into account such &#39;durative&#39; act=
+ions, which the authors also somehow allow to be terminated mid-way through=
+ execution. In some other BDI languages such as [29], actions are atomic an=
+d cannot be terminated mid-way.<br /><br />In the Example section it is not=
+ clear what the vertical bar `|&#39; is meant to be. Is it a logical OR? Bu=
+t since &#39;stop&#39; is a proposition, and &#39;.body_done&#39; is an act=
+ion, this vertical bar syntax is non-intuitive. Having an action to represe=
+nt the fact that a plan-body has completed execution also seems rather &#39=
+;hacky&#39;, compared to the plan-rules shown on page 2, left column (from =
+standard AgentSpeak). Similarly, the &#39;Single Minded Commitment&#39; for=
+ a goal requires explicit programming (e.g. the use of &#39;.drop_intention=
+ (...)&#39;), whereas it seems to be handled more elegantly in the formalis=
+ms of [25,29], via the declarative goal construct Goal(s,P,f). While the au=
+thors do cite these papers there is no comparison w.r.t. what the differenc=
+es are between the &#39;Single Minded Commitment&#39; approach presented by=
+ the authors and the approach in [25,29]. For example, Goal(s,P,f) can also=
+ drop an intention P being pursued if &#39;s&#39; or &#39;f&#39; become tru=
+e. In addition, [25] seems to also allow failure handling for e-plans (see =
+rules A^2_goal and A^3_goal).<br /><br />When an e-plan needs to be defined=
+ inside multiple g-plans, it seems the e-plan needs to be repeated inside a=
+ll of the g-plans, whereas in AgentSpeak(L) the e-plan will only need to be=
+ specified once. Moreover, it looks like the e-plans that are &#39;related =
+to&#39; g-plans could be automatically computed based on the effects brough=
+t about by standard AgentSpeak(L) e-plans and the preconditions of g-plans =
+(e.g. &#39;stop&#39; affects &#39;not stop&#39; in the left column of page =
+2), rather than asking the programmer to directly/manually specify (and som=
+etimes repeat) e-plans and g-plans in the structure/syntax proposed by the =
+authors. <br /><br />In Section 3.3 the authors have specified a failure go=
+al &#39;-g&#39; *inside* the specification of the body of the corresponding=
+ g-plan, which is contrary to how it is done in Jason (as mentioned by the =
+authors) and also counter-intuitive. It makes sense to specify, for example=
+, goal +!g1 inside the body of +!g because !g1 actually occurs inside the p=
+lan for !g. The failure handling example on page 2, second column, is also =
+not convincing. First of all, why would a &#39;println&#39; action ever fai=
+l? If it does fail, why would the println(&quot;failure&quot;) action in &#=
+39;-!manage_stop&#39; succeed? Also it is not clear how/whether the AgentSp=
+eak semantics can handle such action failure. For example, some other agent=
+ programming languages represent the &#39;failure&#39; of an action as the =
+non-applicability of its precondition, or the failure of a test goal that o=
+ccurs after the action (both of which occur within some plan-body).<br /><b=
+r />While the evaluation seems to suggest that AgentSpeak(ER) is not signif=
+icantly worse than ASTRA, a more suitable evaluation would have been to see=
+ whether (manual) agent-programming efficiency can actually be improved by =
+the new syntax and grouping of plans proposed by the authors. This would re=
+quire some sort of carefully designed user study to see whether writing age=
+nts in AgentSpeak(ER) is faster than writing then in AgentSpeak(L).</span><=
+/p><br><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-botto=
+m:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; background-colo=
+r: transparent; font-variant-ligatures: normal; font-variant-east-asian: no=
+rmal; font-variant-position: normal; vertical-align: baseline; white-space:=
+ pre-wrap;"></span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:=
+0pt;margin-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial;=
+ font-variant-ligatures: normal; font-variant-east-asian: normal; font-vari=
+ant-position: normal; vertical-align: baseline; white-space: pre-wrap;"></s=
+pan></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bott=
+om:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; background-col=
+or: transparent; font-variant-ligatures: normal; font-variant-east-asian: n=
+ormal; font-variant-position: normal; vertical-align: baseline; white-space=
+: pre-wrap;">---------</span></p><br><p dir=3D"ltr" style=3D"line-height:1.=
+38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font-size: 11pt; font-=
+family: Arial; background-color: transparent; font-variant-ligatures: norma=
+l; font-variant-east-asian: normal; font-variant-position: normal; vertical=
+-align: baseline; white-space: pre-wrap;"></span></p><p dir=3D"ltr" style=
+=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font=
+-size: 11pt; font-family: Arial; background-color: transparent; font-varian=
+t-ligatures: normal; font-variant-east-asian: normal; font-variant-position=
+: normal; vertical-align: baseline; white-space: pre-wrap;"></span></p><p d=
+ir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; background-color: transpar=
+ent; font-variant-ligatures: normal; font-variant-east-asian: normal; font-=
+variant-position: normal; vertical-align: baseline; white-space: pre-wrap;"=
+></span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-=
+bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; background=
+-color: transparent; font-variant-ligatures: normal; font-variant-east-asia=
+n: normal; font-variant-position: normal; vertical-align: baseline; white-s=
+pace: pre-wrap;"></span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin=
+-top:0pt;margin-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: A=
+rial; background-color: transparent; font-variant-ligatures: normal; font-v=
+ariant-east-asian: normal; font-variant-position: normal; vertical-align: b=
+aseline; white-space: pre-wrap;"></span></p><p dir=3D"ltr" style=3D"line-he=
+ight:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font-size: 11pt=
+; font-family: Arial; background-color: transparent; font-variant-ligatures=
+: normal; font-variant-east-asian: normal; font-variant-position: normal; v=
+ertical-align: baseline; white-space: pre-wrap;"></span></p><p dir=3D"ltr" =
+style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D=
+"font-size: 11pt; font-family: Arial; background-color: transparent; font-v=
+ariant-ligatures: normal; font-variant-east-asian: normal; font-variant-pos=
+ition: normal; vertical-align: baseline; white-space: pre-wrap;"></span></p=
+><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;=
+"><span style=3D"font-size: 11pt; font-family: Arial; background-color: tra=
+nsparent; font-variant-ligatures: normal; font-variant-east-asian: normal; =
+font-variant-position: normal; vertical-align: baseline; white-space: pre-w=
+rap;"></span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;ma=
+rgin-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; backg=
+round-color: transparent; font-variant-ligatures: normal; font-variant-east=
+-asian: normal; font-variant-position: normal; vertical-align: baseline; wh=
+ite-space: pre-wrap;">- Metareview: </span></p><p dir=3D"ltr" style=3D"line=
+-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font-size: 1=
+1pt; font-family: Arial; background-color: transparent; font-variant-ligatu=
+res: normal; font-variant-east-asian: normal; font-variant-position: normal=
+; vertical-align: baseline; white-space: pre-wrap;">Summary of reviews<br /=
+>=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D<br /><br />Thank you for =
+your work on extending AgentSpeak (L) to better manage goal reasoning. The =
+reviewers agree that the work is interesting. However, as can be seen from =
+their reviews, they all have concerns with the work presented. The main cri=
+ticism is around the evaluation. Although the paper claims this extension i=
+mproves four aspects as mentioned in the introduction, there is no empirica=
+l evidence that it does. This is something the authors should address to im=
+prove upon this work. The reviewers have also made other useful suggestions=
+ which I hope the authors will take onboard.</span></p><p dir=3D"ltr" style=
+=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style=3D"font=
+-size: 11pt; font-family: Arial; background-color: transparent; font-varian=
+t-ligatures: normal; font-variant-east-asian: normal; font-variant-position=
+: normal; vertical-align: baseline; white-space: pre-wrap;"></span></p><p d=
+ir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; background-color: transpar=
+ent; font-variant-ligatures: normal; font-variant-east-asian: normal; font-=
+variant-position: normal; vertical-align: baseline; white-space: pre-wrap;"=
+></span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-=
+bottom:0pt;"><span style=3D"font-size: 11pt; font-family: Arial; background=
+-color: transparent; font-variant-ligatures: normal; font-variant-east-asia=
+n: normal; font-variant-position: normal; vertical-align: baseline; white-s=
+pace: pre-wrap;"></span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin=
+-top:0pt;margin-bottom:0pt;"><span style=3D"font-size: 11pt; font-family: A=
+rial; background-color: transparent; font-variant-ligatures: normal; font-v=
+ariant-east-asian: normal; font-variant-position: normal; vertical-align: b=
+aseline; white-space: pre-wrap;"></span></p></span></div>
+--===============8253600704456096958==--
